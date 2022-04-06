@@ -1,4 +1,3 @@
-package Lab 5;
 
 abstract class Piece {
     protected char symbol;
