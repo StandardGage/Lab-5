@@ -28,6 +28,17 @@ public class PieceMinion extends Piece {
         return numTimesSpawned;
     }
 
+    /**
+     * Implemented this function
+     * not sure how canspawn would
+     * have any effect without it
+     * 
+     * @author Gage Schuster
+     */
+    public void incrementNumTimesSpawned() {
+        numTimesSpawned += 1;
+    }
+
     public void setNumRecruits(int numRecruits) {
         this.numRecruits = numRecruits;
     }
@@ -44,6 +55,8 @@ public class PieceMinion extends Piece {
     }
 
     public PieceMinion spawn() {
+        // added this line so canspawn actually has a use
+        incrementNumTimesSpawned();
         return new PieceMinion(Character.toLowerCase(this.symbol),
                 this.teamColor, 1,
                 0,

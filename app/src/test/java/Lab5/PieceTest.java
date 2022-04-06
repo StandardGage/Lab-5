@@ -157,40 +157,39 @@ class PieceTest {
             fail(e.getMessage());
         }
     }
-    /*
-     * @Test
-     * public void test_EvilMinion() {
-     * System.out.println("Testing Evil Minion Piece");
-     * PieceEvilMinion bob = new PieceEvilMinion('E',
-     * "Blu",4,2,3,
-     * true,false);
-     * // check inheritance
-     * assertTrue(bob instanceof PieceMinion);
-     * 
-     * assertEquals(4,bob.getNumRecruits());
-     * assertEquals(2,bob.getNumAttacks());
-     * assertEquals(3,bob.getNumTimesSpawned());
-     * assertTrue(bob.isHidden());
-     * assertFalse(bob.isOriginal());
-     * 
-     * try {
-     * // speak should be implemented
-     * Method m = PieceEvilMinion.class.getMethod("speak", new Class[]{});
-     * assertEquals(void.class, m.getReturnType());
-     * assertFalse(Modifier.isAbstract(m.getModifiers()));
-     * 
-     * // validPath should be implemented
-     * m = PieceMinion.class.getDeclaredMethod("validMovePath",
-     * int.class,int.class,int.class,int.class);
-     * assertEquals(boolean.class, m.getReturnType());
-     * assertFalse(Modifier.isAbstract(m.getModifiers()));
-     * 
-     * } catch (Exception e) {
-     * // not supposed to happen
-     * e.printStackTrace();
-     * fail(e.getMessage());
-     * }
-     * }
-     */
+
+    @Test
+    public void test_EvilMinion() {
+        System.out.println("Testing Evil Minion Piece");
+        PieceEvilMinion bob = new PieceEvilMinion('E',
+                "Blu", 4, 2, 3,
+                true, false);
+        // check inheritance
+        assertTrue(bob instanceof PieceMinion);
+
+        assertEquals(4, bob.getNumRecruits());
+        assertEquals(2, bob.getNumAttacks());
+        assertEquals(3, bob.getNumTimesSpawned());
+        assertTrue(bob.isHidden());
+        assertFalse(bob.isOriginal());
+
+        try {
+            // speak should be implemented
+            Method m = PieceEvilMinion.class.getMethod("speak", new Class[] {});
+            assertEquals(void.class, m.getReturnType());
+            assertFalse(Modifier.isAbstract(m.getModifiers()));
+
+            // validPath should be implemented
+            m = PieceMinion.class.getDeclaredMethod("validMovePath",
+                    int.class, int.class, int.class, int.class);
+            assertEquals(boolean.class, m.getReturnType());
+            assertFalse(Modifier.isAbstract(m.getModifiers()));
+
+        } catch (Exception e) {
+            // not supposed to happen
+            e.printStackTrace();
+            fail(e.getMessage());
+        }
+    }
 
 }
