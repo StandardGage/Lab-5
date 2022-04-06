@@ -1,12 +1,8 @@
 package Lab5;
 
 public class PieceBlueHen extends Piece {
-    private char symbol;
-    private String teamColor;
     private int numAttacks;
     private int numRecruits;
-    private boolean hidden;
-    private boolean original;
     private boolean flies;
 
     final public int MAX_NUM_ATTACKS = 3;
@@ -15,12 +11,9 @@ public class PieceBlueHen extends Piece {
             String teamColor,
             int numAttacks, int numRecruits,
             boolean hidden, boolean original) {
-        this.symbol = symbol;
-        this.teamColor = teamColor;
+        super(symbol, teamColor, hidden, original);
         this.numAttacks = numAttacks;
         this.numRecruits = numRecruits;
-        this.hidden = hidden;
-        this.original = original;
         updateFly();
     }
 
@@ -28,14 +21,6 @@ public class PieceBlueHen extends Piece {
         this('H', "NON",
                 0, 0,
                 false, true);
-    }
-
-    public char getSymbol() {
-        return symbol;
-    }
-
-    public String getTeamColor() {
-        return teamColor;
     }
 
     public int getNumAttacks() {
@@ -46,24 +31,8 @@ public class PieceBlueHen extends Piece {
         return this.numRecruits;
     }
 
-    public boolean isHidden() {
-        return hidden;
-    }
-
-    public boolean isOriginal() {
-        return original;
-    }
-
     public boolean canFly() {
         return this.flies;
-    }
-
-    public void setSymbol(char symbol) {
-        this.symbol = symbol;
-    }
-
-    public void setTeamColor(String teamColor) {
-        this.teamColor = teamColor;
     }
 
     public void setNumAttacks(int numAttacks) {
@@ -73,14 +42,6 @@ public class PieceBlueHen extends Piece {
 
     public void setNumRecruits(int numRecruits) {
         this.numRecruits = numRecruits;
-    }
-
-    public void setHidden(boolean hidden) {
-        this.hidden = hidden;
-    }
-
-    public void setOriginal(boolean original) {
-        this.original = original;
     }
 
     private void updateFly() {

@@ -1,24 +1,17 @@
 package Lab5;
 
-public class PieceMinion {
-    private char symbol;
-    private String teamColor;
+public class PieceMinion extends Piece {
     private int numRecruits;
     private int numTimesSpawned;
-    private boolean hidden;
-    private boolean original;
 
     public static int MAX_NUM_SPAWNED = 3;
 
     public PieceMinion(char symbol, String teamColor,
             int numRecruits, int numTimesSpawned,
             boolean hidden, boolean original) {
-        this.symbol = symbol;
-        this.teamColor = teamColor;
+        super(symbol, teamColor, hidden, original);
         this.numRecruits = numRecruits;
         this.numTimesSpawned = numTimesSpawned;
-        this.hidden = hidden;
-        this.original = original;
     }
 
     public PieceMinion() {
@@ -27,36 +20,12 @@ public class PieceMinion {
                 false, true);
     }
 
-    public char getSymbol() {
-        return symbol;
-    }
-
-    public String getTeamColor() {
-        return teamColor;
-    }
-
     public int getNumRecruits() {
         return numRecruits;
     }
 
     public int getNumTimesSpawned() {
         return numTimesSpawned;
-    }
-
-    public boolean isHidden() {
-        return hidden;
-    }
-
-    public boolean isOriginal() {
-        return original;
-    }
-
-    public void setHidden(boolean hidden) {
-        this.hidden = hidden;
-    }
-
-    public void setOriginal(boolean original) {
-        this.original = original;
     }
 
     public void setNumRecruits(int numRecruits) {
@@ -74,8 +43,8 @@ public class PieceMinion {
         return true;
     }
 
-    public PieceMinion1 spawn() {
-        return new PieceMinion1(Character.toLowerCase(this.symbol),
+    public PieceMinion spawn() {
+        return new PieceMinion(Character.toLowerCase(this.symbol),
                 this.teamColor, 1,
                 0,
                 false,
