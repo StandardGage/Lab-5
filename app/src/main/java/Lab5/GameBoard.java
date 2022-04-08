@@ -41,7 +41,6 @@ public class GameBoard {
     }
 
     /* public BoardSquare findRandomEmptySpace(){ //is this supposed to be infinite?
-
     }
      */
 
