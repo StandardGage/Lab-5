@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+
 class GameBoardTest {
+
     public static String boardString(int numRows, int numColumns) {
         StringBuilder boardString = new StringBuilder();
         boardString.append("Col :       ");
@@ -69,12 +71,11 @@ class GameBoardTest {
         emptySpace.setPiece(kevin);
         System.out.println(testGameBoard.toString());
 
-      /*  //spawn a Piece and place on the GameBoard
-        Piece stuart = bob.spawn();
+        //spawn a Piece and place on the GameBoard
+        Piece stuart = bob.spawn(); //FIX: something's wrong with the spawn method
         assertTrue(stuart instanceof  PieceEvilMinion);
         testGameBoard.getSquares()[numRows-3][numCols-3].setPiece(stuart);
         System.out.println(testGameBoard.toString());
     }
-       */
     }
 }
