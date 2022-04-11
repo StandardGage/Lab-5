@@ -72,7 +72,9 @@ class GameBoardTest {
         System.out.println(testGameBoard.toString());
 
         //spawn a Piece and place on the GameBoard
-        Piece stuart = bob.spawn(); //FIX: something's wrong with the spawn method
+        Piece stuart = bob.spawn();
+        //FIX: something's wrong with the spawn method
+
         assertTrue(stuart instanceof  PieceEvilMinion);
         testGameBoard.getSquares()[numRows-3][numCols-3].setPiece(stuart);
         System.out.println(testGameBoard.toString());
