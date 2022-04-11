@@ -26,23 +26,27 @@ public class GameBoard {
 
     public boolean inBounds(int row, int column){
         boolean bounds = false;
-        if(row >= 0 && column >= 0 && column < this.numColumns && row < this.numColumns){
+        if(row >= 0 && column >= 0 && column < getNumColumns() && row < getNumRows()){
             bounds = true;
         }
         return bounds;
     }
 
     private void setUpEmptyBoard(){
-        for(int i = 0; i < numRows; i++){
-            for(int j = 0; j < numColumns; j++){
+        for(int i = 0; i < getNumRows(); i++){
+            for(int j = 0; j < getNumColumns(); j++){
                 this.squares[i][j] = new BoardSquare("black");
             } //alternate colors?
         }
     }
 
-    /* public BoardSquare findRandomEmptySpace(){ //is this supposed to be infinite?
+    public BoardSquare findRandomEmptySpace(){ //is this supposed to be infinite?
+        BoardSquare randomSquare = this.squares[(int) (Math.random() * this.numRows)][(int) (Math.random() * this.numColumns)];
+        while(! randomSquare.isEmpty()){
+            randomSquare = this.squares[(int) (Math.random() * this.numRows)][(int) (Math.random() * this.numColumns)];
+        }
+        return randomSquare;
     }
-     */
 
     @Override
     public String toString(){
