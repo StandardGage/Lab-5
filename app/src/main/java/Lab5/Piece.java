@@ -52,6 +52,8 @@ abstract class Piece {
 
     public abstract boolean canSpawn();
 
+    public abstract Piece spawn();
+
     @Override
     public String toString() {
         return teamColor + " " + symbol;
