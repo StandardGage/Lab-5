@@ -1,5 +1,14 @@
 package Lab5;
 
+/**
+ * Basic Piece class for all game pieces.
+ * Has symbol, team color, hidden, and original property constructors,
+ * getters, and setters for each property. Includes spawn (canSpawn and spawn),
+ * toString, and speak methods as well.
+ *
+ * @author Faith Lovell and Gage Schuster
+ * @version 1.0
+ */
 abstract class Piece {
     protected char symbol;
     protected String teamColor;
