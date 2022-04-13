@@ -2,12 +2,25 @@ package Lab5;
 
 import java.util.Collections;
 
+/**
+ * Object that represents the an active game. Will start a GameBoard with the teams,
+ * set their pieces on the board, and alternates turns for each team.
+ *
+ * @author Faith Lovell and Gage Schuster
+ * @version 1.0
+ */
 public class Game {
     private GameBoard board;
     private Team team1;
     private Team team2;
     private String turn;
 
+    /**
+     * Creates a GameBoard instance with specified rows and columns,
+     * and randomly places both team's pieces on the board.
+     * @param numRows number of rows on the board
+     * @param numColumns number of columns on the board
+     */
     private void initializeGameBoard(int numRows, int numColumns){
         this.board = new GameBoard(numRows, numColumns);
         for(Piece teamPiece : team1.getTeamPieces()){
@@ -47,6 +60,11 @@ public class Game {
         }
     }
 
+    /**
+     * Checks if it is the given team's turn
+     * @param team team whose turn will be checked
+     * @return boolean true if it is the team's turn, otherwise false
+     */
     public boolean isTurn(Team team){
         return this.getCurrentTeam() == team;
     }
@@ -55,6 +73,10 @@ public class Game {
         return this.board.getSquares();
     }
 
+    /**
+     * Alternates turns between the two teams;
+     * changes turn color to the opponent team's color.
+     */
     public void changeTurn(){
         this.turn = getOpponentTeam().getTeamColor();
     }

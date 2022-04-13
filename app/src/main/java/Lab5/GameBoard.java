@@ -1,5 +1,13 @@
 package Lab5;
 
+/**
+ * Creates a GameBoard object that sets rows, columns, and board square
+ * objects for every space on the board. Can determine if a space is on
+ * the board, and find empty spaces.
+ *
+ * @author Faith Lovell and Gage Schuster
+ * @version 1.0
+ */
 public class GameBoard {
     private int numRows;
     private int numColumns;
@@ -24,6 +32,12 @@ public class GameBoard {
         return this.squares;
     }
 
+    /**
+     * Determines if a space is in the bounds of the GameBoard
+     * @param row int representing the space's row
+     * @param column int representing the space's column
+     * @return boolean true if it is in bounds, false if it isn't
+     */
     public boolean inBounds(int row, int column){
         boolean bounds = false;
         if(row >= 0 && column >= 0 && column < getNumColumns() && row < getNumRows()){
@@ -32,15 +46,28 @@ public class GameBoard {
         return bounds;
     }
 
+    /**
+     * Creates a board with alternating white and blue empty BoardSquare spaces.
+     */
     private void setUpEmptyBoard(){
-        for(int i = 0; i < getNumRows(); i++){
-            for(int j = 0; j < getNumColumns(); j++){
-                this.squares[i][j] = new BoardSquare("black");
-            } //alternate colors?
+        for(int i = 0; i < getNumRows(); i += 2){
+            for(int j = 0; j < getNumColumns(); j+=2){
+                this.squares[i][j] = new BoardSquare("white");
+            }
+        }
+        for(int i = 1; i < getNumRows(); i += 2){
+            for(int j = 1; j < getNumColumns(); j+=2){
+                this.squares[i][j] = new BoardSquare("blue");
+            }
         }
     }
 
-    public BoardSquare findRandomEmptySpace(){ //is this supposed to be infinite?
+    /**
+     * Generates random row and column indexes and checks to see if that space on the Board is empty.
+     *
+     * @return the first randomly generated BoardSquare space that is empty.
+     */
+    public BoardSquare findRandomEmptySpace(){
         BoardSquare randomSquare = this.squares[(int) (Math.random() * this.numRows)][(int) (Math.random() * this.numColumns)];
         while(! randomSquare.isEmpty()){
             randomSquare = this.squares[(int) (Math.random() * this.numRows)][(int) (Math.random() * this.numColumns)];
