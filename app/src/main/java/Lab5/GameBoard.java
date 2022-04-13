@@ -13,34 +13,35 @@ public class GameBoard {
     private int numColumns;
     private BoardSquare[][] squares;
 
-    public GameBoard(int rows, int columns){
+    public GameBoard(int rows, int columns) {
         this.numRows = rows;
         this.numColumns = columns;
         this.squares = new BoardSquare[rows][columns];
         setUpEmptyBoard();
     }
 
-    public int getNumRows(){
+    public int getNumRows() {
         return this.numRows;
     }
 
-    public int getNumColumns(){
+    public int getNumColumns() {
         return this.numColumns;
     }
 
-    public BoardSquare[][] getSquares(){
+    public BoardSquare[][] getSquares() {
         return this.squares;
     }
 
     /**
      * Determines if a space is in the bounds of the GameBoard
-     * @param row int representing the space's row
+     * 
+     * @param row    int representing the space's row
      * @param column int representing the space's column
      * @return boolean true if it is in bounds, false if it isn't
      */
-    public boolean inBounds(int row, int column){
+    public boolean inBounds(int row, int column) {
         boolean bounds = false;
-        if(row >= 0 && column >= 0 && column < getNumColumns() && row < getNumRows()){
+        if (row >= 0 && column >= 0 && column < getNumColumns() && row < getNumRows()) {
             bounds = true;
         }
         return bounds;
@@ -49,51 +50,49 @@ public class GameBoard {
     /**
      * Creates a board with alternating white and blue empty BoardSquare spaces.
      */
-    private void setUpEmptyBoard(){
-        for(int i = 0; i < getNumRows(); i += 2){
-            for(int j = 0; j < getNumColumns(); j+=2){
-                this.squares[i][j] = new BoardSquare("white");
-            }
-        }
-        for(int i = 1; i < getNumRows(); i += 2){
-            for(int j = 1; j < getNumColumns(); j+=2){
-                this.squares[i][j] = new BoardSquare("blue");
+    private void setUpEmptyBoard() {
+        for (int i = 0; i < getNumRows(); i++) {
+            for (int j = 0; j < getNumColumns(); j++) {
+                if ((i - j) % 2 == 0) {
+                    this.squares[i][j] = new BoardSquare("blue");
+                } else {
+                    this.squares[i][j] = new BoardSquare("white");
+                }
             }
         }
     }
 
     /**
-     * Generates random row and column indexes and checks to see if that space on the Board is empty.
+     * Generates random row and column indexes and checks to see if that space on
+     * the Board is empty.
      *
      * @return the first randomly generated BoardSquare space that is empty.
      */
-    public BoardSquare findRandomEmptySpace(){
-        BoardSquare randomSquare = this.squares[(int) (Math.random() * this.numRows)][(int) (Math.random() * this.numColumns)];
-        while(! randomSquare.isEmpty()){
+    public BoardSquare findRandomEmptySpace() {
+        BoardSquare randomSquare = this.squares[(int) (Math.random() * this.numRows)][(int) (Math.random()
+                * this.numColumns)];
+        while (!randomSquare.isEmpty()) {
             randomSquare = this.squares[(int) (Math.random() * this.numRows)][(int) (Math.random() * this.numColumns)];
         }
         return randomSquare;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         StringBuilder boardString = new StringBuilder();
         boardString.append("Col :       ");
 
-        for(int col = 0; col < squares[0].length; col++){
+        for (int col = 0; col < squares[0].length; col++) {
             boardString.append(col + "        ");
         }
         boardString.append("\n");
-        for(int row = 0; row < squares.length; row++){
+        for (int row = 0; row < squares.length; row++) {
             boardString.append("Row : " + row + "   ");
-            for(int col = 0; col < squares[row].length; col++){
+            for (int col = 0; col < squares[row].length; col++) {
                 boardString.append(squares[row][col].toString() + "  ");
             }
             boardString.append("\n");
         }
         return boardString.toString();
     }
-
-
-
 }
