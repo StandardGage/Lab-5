@@ -9,11 +9,11 @@ import java.util.Collections;
  * @author Faith Lovell and Gage Schuster
  * @version 1.0
  */
-public class Game {
-    private GameBoard board;
-    private Team team1;
-    private Team team2;
-    private String turn;
+public abstract class Game {
+    protected GameBoard board;
+    protected Team team1;
+    protected Team team2;
+    protected String turn;
 
     /**
      * Creates a GameBoard instance with specified rows and columns,
@@ -80,6 +80,10 @@ public class Game {
     public void changeTurn(){
         this.turn = getOpponentTeam().getTeamColor();
     }
+
+    public abstract boolean isAWinner();
+    public abstract Team getWinner();
+    public abstract boolean isGameEnded();
 
     @Override
     public String toString() {
