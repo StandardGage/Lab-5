@@ -7,7 +7,7 @@ package Lab5;
  * convert minion Pieces.
  *
  * @author Faith Lovell and Gage Schuster
- * @version 1.0
+ * @version 2.0
  */
 public class PieceEvilMinion extends PieceMinion implements Attacker {
     private int numAttacks;
