@@ -7,7 +7,7 @@ import java.util.Collections;
  * set their pieces on the board, and alternates turns for each team.
  *
  * @author Faith Lovell and Gage Schuster
- * @version 1.0
+ * @version 2.0
  */
 public abstract class Game {
     protected GameBoard board;
