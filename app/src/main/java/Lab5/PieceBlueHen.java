@@ -1,6 +1,6 @@
 package Lab5;
 
-public class PieceBlueHen extends Piece {
+public class PieceBlueHen extends Piece implements Recruiter, Attacker {
     private int numAttacks;
     private int numRecruits;
     private boolean flies;
@@ -35,6 +35,7 @@ public class PieceBlueHen extends Piece {
         return this.flies;
     }
 
+    @Override
     public void setNumAttacks(int numAttacks) {
         this.numAttacks = numAttacks;
         updateFly();
@@ -73,4 +74,15 @@ public class PieceBlueHen extends Piece {
     public boolean canSpawn() {
         return true;
     }
+
+    @Override
+    public boolean validRecruitPath(int rowRecruiter, int columnRecruiter, int rowRecruit, int columnRecruit) {
+        return true;
+    }
+
+    @Override
+    public boolean validAttackPath(int rowAttacking, int columnAttacking, int RowAttacked, int columnAttacked) {
+        return true;
+    }
 }
+

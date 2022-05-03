@@ -9,7 +9,7 @@ package Lab5;
  * @author Faith Lovell and Gage Schuster
  * @version 1.0
  */
-public class PieceEvilMinion extends PieceMinion {
+public class PieceEvilMinion extends PieceMinion implements Attacker {
     private int numAttacks;
     private boolean hungry;
 
@@ -32,6 +32,11 @@ public class PieceEvilMinion extends PieceMinion {
 
     public void setNumAttacks(int numAttacks) {
         this.numAttacks = numAttacks;
+    }
+
+    @Override
+    public boolean validAttackPath(int rowAttacking, int columnAttacking, int RowAttacked, int columnAttacked) {
+        return true;
     }
 
     public void updateHungry() {
@@ -60,4 +65,5 @@ public class PieceEvilMinion extends PieceMinion {
     public boolean canAttack() {
         return this.hungry;
     }
+
 }

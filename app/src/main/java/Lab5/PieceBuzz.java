@@ -1,6 +1,6 @@
 package Lab5;
 
-public class PieceBuzz extends Piece {
+public class PieceBuzz extends Piece implements Attacker{
     private int numAttacks;
     private int numTimesBeenAttacked;
     private boolean workingLaser;
@@ -42,6 +42,11 @@ public class PieceBuzz extends Piece {
 
     public void setNumAttacks(int numAttacks) {
         this.numAttacks = numAttacks;
+    }
+
+    @Override
+    public boolean validAttackPath(int rowAttacking, int columnAttacking, int RowAttacked, int columnAttacked) {
+        return true;
     }
 
     public void updateNumTimesBeenAttacked() {

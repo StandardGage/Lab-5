@@ -1,6 +1,6 @@
 package Lab5;
 
-public class PieceMinion extends Piece {
+public class PieceMinion extends Piece implements Recruiter {
     private int numRecruits;
     private int numTimesSpawned;
 
@@ -41,6 +41,11 @@ public class PieceMinion extends Piece {
 
     public void setNumRecruits(int numRecruits) {
         this.numRecruits = numRecruits;
+    }
+
+    @Override
+    public boolean validRecruitPath(int rowRecruiter, int columnRecruiter, int rowRecruit, int columnRecruit) {
+        return true;
     }
 
     public void speak() {
