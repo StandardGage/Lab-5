@@ -1,6 +1,7 @@
 package Lab5;
 
 public class Rules {
+//TODO: create some test cases & test rules, add docstrings
 
     public static boolean checkValidAction(GameS22 game, int fromRow, int fromColumn, int toRow, int toColumn, char actionType) {
         BoardSquare fromSquare = game.getBoardSquares()[fromRow][fromColumn];
