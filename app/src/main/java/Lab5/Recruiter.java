@@ -1,5 +1,10 @@
 package Lab5;
 
+/**
+ * Interface for pieces that can recruit other pieces in the game.
+ * @authors Faith Lovell and Gage Schuster
+ * @version 1.0
+ */
 public interface Recruiter {
     public int getNumRecruits();
 
