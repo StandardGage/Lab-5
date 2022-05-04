@@ -1,8 +1,26 @@
 package Lab5;
 
+/**
+ * This class contains the rules for each type of piece in the game.
+ * Determines what a piece can and cannot do.
+ *
+ * @authors Faith Lovell and Gage Schuster
+ * @version 1.0
+ */
 public class Rules {
 //TODO: create some test cases & test rules, add docstrings
 
+    /**
+     * Determines if the piece in a certain square can move to another/perform an
+     * action on the piece it is going to.
+     * @param game current game being played
+     * @param fromRow index of row the piece is coming from
+     * @param fromColumn index of column the piece is coming from
+     * @param toRow index of row the piece is moving to
+     * @param toColumn index of column the piece is moving to
+     * @param actionType char M (move), S (spawn), R (recruit), or A(attack)
+     * @return true if the move can be made, otherwise false
+     */
     public static boolean checkValidAction(GameS22 game, int fromRow, int fromColumn, int toRow, int toColumn, char actionType) {
         BoardSquare fromSquare = game.getBoardSquares()[fromRow][fromColumn];
         BoardSquare toSquare = game.getBoardSquares()[toRow][toColumn];

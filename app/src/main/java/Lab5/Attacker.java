@@ -1,5 +1,10 @@
 package Lab5;
 
+/**
+ * Interface for pieces that can attack in the game.
+ * @authors Faith Lovell and Gage Schuster
+ * @version 1.0
+ */
 public interface Attacker {
     public int getNumAttacks();
 

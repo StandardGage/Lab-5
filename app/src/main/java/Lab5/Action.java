@@ -1,5 +1,13 @@
 package Lab5;
 
+/**
+ * Will represent the actions that pieces can do during the game.
+ * Includes five member fields, a constructor, and performAction method.
+ *
+ * @authors Faith Lovell and Gage Schuster
+ * @version 1.0
+ */
+
 abstract class Action {
     protected GameS22 game;
     protected int fromRow;
