@@ -3,7 +3,8 @@ package Lab5;
 import java.util.Collections;
 
 /**
- * Object that represents the an active game. Will start a GameBoard with the teams,
+ * Object that represents the an active game. Will start a GameBoard with the
+ * teams,
  * set their pieces on the board, and alternates turns for each team.
  *
  * @author Faith Lovell and Gage Schuster
@@ -18,58 +19,58 @@ public abstract class Game {
     /**
      * Creates a GameBoard instance with specified rows and columns,
      * and randomly places both team's pieces on the board.
-     * @param numRows number of rows on the board
+     * 
+     * @param numRows    number of rows on the board
      * @param numColumns number of columns on the board
      */
-    private void initializeGameBoard(int numRows, int numColumns){
+    private void initializeGameBoard(int numRows, int numColumns) {
         this.board = new GameBoard(numRows, numColumns);
-        for(Piece teamPiece : team1.getTeamPieces()){
+        for (Piece teamPiece : team1.getTeamPieces()) {
             this.board.findRandomEmptySpace().setPiece(teamPiece);
         }
-        for(Piece teamPiece : team2.getTeamPieces()){
+        for (Piece teamPiece : team2.getTeamPieces()) {
             this.board.findRandomEmptySpace().setPiece(teamPiece);
         }
     }
 
-    public Game(int rows, int columns, Team team1, Team team2){
+    public Game(int rows, int columns, Team team1, Team team2) {
         this.turn = team1.getTeamColor();
         this.team1 = team1;
         this.team2 = team2;
         initializeGameBoard(rows, columns);
     }
 
-    public GameBoard getGameBoard(){
+    public GameBoard getGameBoard() {
         return this.board;
     }
 
-    public Team getCurrentTeam(){
-        if(this.turn.equals(this.team1.getTeamColor())){
+    public Team getCurrentTeam() {
+        if (this.turn.equals(this.team1.getTeamColor())) {
             return this.team1;
-        }
-        else{
+        } else {
             return this.team2;
         }
     }
 
-    public Team getOpponentTeam(){
-        if(this.turn.equals(this.team1.getTeamColor())){
+    public Team getOpponentTeam() {
+        if (this.turn.equals(this.team1.getTeamColor())) {
             return this.team2;
-        }
-        else{
+        } else {
             return this.team1;
         }
     }
 
     /**
      * Checks if it is the given team's turn
+     * 
      * @param team team whose turn will be checked
      * @return boolean true if it is the team's turn, otherwise false
      */
-    public boolean isTurn(Team team){
+    public boolean isTurn(Team team) {
         return this.getCurrentTeam() == team;
     }
 
-    public BoardSquare[][] getBoardSquares(){
+    public BoardSquare[][] getBoardSquares() {
         return this.board.getSquares();
     }
 
@@ -77,12 +78,14 @@ public abstract class Game {
      * Alternates turns between the two teams;
      * changes turn color to the opponent team's color.
      */
-    public void changeTurn(){
+    public void changeTurn() {
         this.turn = getOpponentTeam().getTeamColor();
     }
 
     public abstract boolean isAWinner();
+
     public abstract Team getWinner();
+
     public abstract boolean isGameEnded();
 
     @Override
