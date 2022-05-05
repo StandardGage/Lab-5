@@ -94,13 +94,12 @@ public class Controller {
      */
     public void playGame() {
         boolean valid;
-        while (game.isGameEnded() == false) {
+        while (!game.isGameEnded()) {
             do {
                 view.getNextPlayersAction(game);
-                // TODO: check this
                 valid = Rules.checkValidAction(game, view.fromRow, view.fromColumn, view.toRow, view.toColumn,
                         view.action);
-            } while (valid == false);
+            } while (!valid);
             carryOutAction(view.fromRow, view.fromColumn, view.toRow, view.toColumn, view.action);
             System.out.println(game);
         }

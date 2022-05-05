@@ -8,8 +8,6 @@ package Lab5;
  * @version 1.0
  */
 public class Rules {
-//TODO: create some test cases & test rules, add docstrings
-
     /**
      * Determines if the piece in a certain square can move to another/perform an
      * action on the piece it is going to.
