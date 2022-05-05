@@ -1,11 +1,26 @@
 package Lab5;
 
+/**
+ * This class will represent an action the player can take where they attack another piece on the to
+ * square with their own piece on the from square.
+ *
+ * @authors Faith Lovell and Gage Schuster
+ * @version 1.0
+ */
 public class ActionAttack extends Action {
 
     public ActionAttack(GameS22 game, int fromRow, int fromColumn, int toRow, int toColumn) {
         super(game, fromRow, fromColumn, toRow, toColumn);
     }
 
+    /**
+     * For attacking opponent pieces: call the speak method, remove attacked piece from board &
+     * opponents team, move the from square Piece to the to square. Changes the turn.
+     *
+     * For attacking same team pieces: call from Piece speak method, remove attacked piece from board &
+     * opponents team, create a new Evil Minion Piece and add it to the current team, then place it
+     * on the board where the Minion was, change the turn.
+     */
     @Override
     public void performAction() {
         Piece fromPiece = game.getBoardSquares()[fromRow][fromColumn].removePiece();
@@ -17,9 +32,9 @@ public class ActionAttack extends Action {
 
         if (fromPiece instanceof PieceEvilMinion) {
             if (attackedPiece instanceof PieceMinion) {
-                PieceEvilMinion eminion = new PieceEvilMinion();
-                game.getOpponentTeam().addPieceToTeam(eminion);
-                game.getBoardSquares()[fromRow][fromColumn].setPiece(eminion);
+                PieceEvilMinion eMinion = new PieceEvilMinion();
+                game.getOpponentTeam().addPieceToTeam(eMinion);
+                game.getBoardSquares()[fromRow][fromColumn].setPiece(eMinion);
             }
         }
 

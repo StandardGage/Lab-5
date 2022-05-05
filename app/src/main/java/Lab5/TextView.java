@@ -2,6 +2,12 @@ package Lab5;
 
 import java.util.Scanner;
 
+/**
+ * Text-based interface for users to play the game.
+ *
+ * @authors Faith Lovell and Gage Schuster
+ * @version 1.0
+ */
 public class TextView {
     int fromRow;
     int fromColumn;
@@ -56,7 +62,7 @@ public class TextView {
      * Takes user input until they enter 'A','M','R',or 'S'
      * -not case sensitive
      * 
-     * @param scr
+     * @param scr Scanner for user input
      * @return input once user inputs 'A','M','R', or 'S'
      */
     public static char getUsersNextActionType(Scanner scr) {
@@ -80,6 +86,11 @@ public class TextView {
 
     }
 
+    /**
+     * Gets action type, and asks the player to enter from square they are selecting to assign it,
+     * and ask them to enter the to square indexes and assign them.
+     * @param game current game
+     */
     public void getNextPlayersAction(GameS22 game) {
         Scanner scr = new Scanner(System.in);
 
@@ -97,10 +108,18 @@ public class TextView {
         toColumn = getValidInt(-1, cols, scr);
     }
 
+    /**
+     * Prints the game object
+     * @param game current game
+     */
     public void updateView(Game game) {
         System.out.println(game);
     }
 
+    /**
+     * Displays when the game is over and which team won (or if there was no winner)
+     * @param game current game
+     */
     public void printEndOfGameMessage(Game game) {
         if (game.getWinner() != null) {
             System.out.println(game.getWinner() + " won the game");
