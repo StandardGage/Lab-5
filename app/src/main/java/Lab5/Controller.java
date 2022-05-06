@@ -83,7 +83,7 @@ public class Controller {
                 ActionSpawn spawn = new ActionSpawn(game, fromRow, fromColumn, toRow, toColumn);
                 spawn.performAction();
             default:
-                System.out.println("Invalid Action Recieved");
+                System.out.println("Invalid Action Received");
                 break;
         }
     }
