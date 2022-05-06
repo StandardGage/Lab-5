@@ -101,7 +101,7 @@ public class Controller {
                         view.action);
             } while (!valid);
             carryOutAction(view.fromRow, view.fromColumn, view.toRow, view.toColumn, view.action);
-            System.out.println(game);
+            view.updateView(game);
         }
         view.printEndOfGameMessage(game);
 

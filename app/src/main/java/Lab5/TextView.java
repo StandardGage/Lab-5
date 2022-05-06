@@ -94,16 +94,16 @@ public class TextView {
     public void getNextPlayersAction(GameS22 game) {
         Scanner scr = new Scanner(System.in);
 
+        System.out.println("Enter Action:");
         action = getUsersNextActionType(scr);
         int rows = game.getGameBoard().getNumRows();
         int cols = game.getGameBoard().getNumColumns();
-
         do {
-            System.out.println("Enter the row and column of the piece to move.");
+            System.out.println("Enter the row and column of the piece to use.");
             fromRow = getValidInt(-1, rows, scr);
             fromColumn = getValidInt(-1, cols, scr);
         } while (game.getBoardSquares()[fromRow][fromColumn].getPiece() == null);
-        System.out.println("Enter the row and column of the square to move to");
+        System.out.println("Enter the row and column of the square to perform action");
         toRow = getValidInt(-1, rows, scr);
         toColumn = getValidInt(-1, cols, scr);
     }
