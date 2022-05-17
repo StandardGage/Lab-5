@@ -1,6 +1,7 @@
 package Lab5;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Represents the team in a game. Holds the team's color and all of their
@@ -46,6 +47,7 @@ public class Team {
     @Override
     public String toString(){
         String pieces = "Team " + this.teamColor + " Pieces :\n";
+        Collections.sort(teamPieces);
         for(Piece teamPiece: this.teamPieces){
             pieces += teamPiece.toString() + " ";
         }
