@@ -10,5 +10,5 @@ public interface Attacker {
 
     public void setNumAttacks(int numAttacks);
 
-    public boolean validAttackPath(int rowAttacking, int columnAttacking, int RowAttacked, int columnAttacked);
+    public boolean validAttackPath(int rowAttacking, int columnAttacking, int rowAttacked, int columnAttacked);
 }

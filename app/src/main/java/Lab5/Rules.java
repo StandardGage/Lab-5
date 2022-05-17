@@ -55,7 +55,57 @@ public class Rules {
                     if(fromPiece.canSpawn()){
                         //checks to square is empty
                         if(toSquare.isEmpty()){
-                            validAction = true;
+                            //PieceMinion spawn path
+                            if(fromPiece instanceof PieceMinion){
+                                //determining closest corner
+                                int endRow = game.getGameBoard().getNumRows() - 1;
+                                int endColumn = game.getGameBoard().getNumColumns() - 1;
+                                int distBottomLeft = (int) Math.sqrt((endRow - fromRow)*(endRow-fromRow) + (fromColumn)*(fromColumn));
+                                int distTopLeft = fromRow + fromColumn;
+                                int distBottomRight = (int) Math.sqrt((endRow-fromRow)*(endRow-fromRow) + (endColumn-fromColumn)*(endColumn-fromColumn));
+                                int distTopRight = (int) Math.sqrt((fromRow)*(fromRow) + (endColumn - fromColumn)*(endColumn-fromColumn));
+                                //finding closest corner
+                                int shortestDist;
+                                if(distBottomLeft < distTopLeft && distBottomLeft < distBottomRight && distBottomLeft < distTopRight){
+                                    shortestDist = distBottomLeft;
+                                }
+                                else if(distTopLeft < distBottomLeft && distTopLeft < distBottomRight && distTopLeft < distTopRight){
+                                    shortestDist = distTopLeft;
+                                }
+                                else if(distBottomRight < distBottomLeft && distBottomRight < distTopRight && distBottomRight < distTopLeft){
+                                    shortestDist = distBottomRight;
+                                }
+                                else if(distTopRight < distBottomLeft && distTopRight < distBottomRight && distTopRight < distTopLeft){
+                                    shortestDist = distBottomLeft;
+                                }
+                                else{ //in case all distances are equal
+                                    shortestDist = -1;
+                                }
+                                //checking if move is valid (finally)
+                                //all distances equal (any corner valid)
+                                if((toRow == 0 && toColumn == 0) || (toRow == endRow && toColumn == 0) || (toRow == 0 && toColumn == endColumn) || (toRow == endRow && toColumn == endColumn)){
+                                    validAction = true;
+                                }
+                                //top left
+                                if((toRow == 0 && toColumn == 0) && (shortestDist == distTopLeft)){
+                                    validAction = true;
+                                }
+                                //bottom left
+                                if((toRow == endRow && toColumn == 0) && (shortestDist == distBottomLeft)){
+                                    validAction = true;
+                                }
+                                //top right
+                                if((toRow == 0 && toColumn == endColumn) && (shortestDist == distTopRight)){
+                                    validAction = true;
+                                }
+                                //bottom right
+                                if((toRow == endRow && toColumn == endColumn) && (shortestDist == distBottomRight)){
+                                    validAction = true;
+                                }
+                            }
+                            else {
+                                validAction = true;
+                            }
                         }
                     }
                     break;

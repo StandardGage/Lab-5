@@ -45,7 +45,7 @@ public class PieceMinion extends Piece implements Recruiter {
 
     @Override
     public boolean validRecruitPath(int rowRecruiter, int columnRecruiter, int rowRecruit, int columnRecruit) {
-        return true;
+        return validMovePath(rowRecruiter, columnRecruiter, rowRecruit, columnRecruiter);
     }
 
     public void speak() {
@@ -54,9 +54,15 @@ public class PieceMinion extends Piece implements Recruiter {
 
     public boolean validMovePath(int fromSquareRow, int fromSquareCol,
             int toSquareRow, int toSquareCol) {
-        // You will implement this method in a later step
-        // each Piece will have a different valid path
-        return true;
+        if(fromSquareCol == toSquareCol){
+            return true;
+        } //mutually exclusive
+        else return fromSquareRow <= toSquareRow - 2 && (fromSquareCol == toSquareCol + -2);
+    }
+
+    @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
+        return true; //implemented in rules
     }
 
     public PieceMinion spawn() {

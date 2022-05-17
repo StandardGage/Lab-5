@@ -35,8 +35,8 @@ public class PieceEvilMinion extends PieceMinion implements Attacker {
     }
 
     @Override
-    public boolean validAttackPath(int rowAttacking, int columnAttacking, int RowAttacked, int columnAttacked) {
-        return true;
+    public boolean validAttackPath(int rowAttacking, int columnAttacking, int rowAttacked, int columnAttacked) {
+        return validMovePath(rowAttacking, columnAttacking, rowAttacked, columnAttacked);
     }
 
     public void updateHungry() {
@@ -47,9 +47,14 @@ public class PieceEvilMinion extends PieceMinion implements Attacker {
         System.out.println("Roar!");
     }
 
-    public boolean validMovePath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
-        // TODO: implement later
-        return true;
+    @Override
+    public boolean validRecruitPath(int rowRecruiter, int columnRecruiter, int rowRecruit, int columnRecruit) {
+        return validMovePath(rowRecruiter, columnRecruiter, rowRecruit, columnRecruiter);
+    }
+
+    @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
+        return validMovePath(fromSquareRow, fromSquareCol, toSquareRow, toSquareCol);
     }
 
     /**

@@ -45,9 +45,13 @@ public class PieceBuzz extends Piece implements Attacker{
     }
 
     @Override
-    public boolean validAttackPath(int rowAttacking, int columnAttacking, int RowAttacked, int columnAttacked) {
-        return true;
+    public boolean validAttackPath(int rowAttacking, int columnAttacking, int rowAttacked, int columnAttacked) {
+        if(rowAttacking == rowAttacked){
+            return true;
+        } //mutually exclusive so the two options can be split into if-else statement
+        else return columnAttacking == columnAttacking && (rowAttacking + -2 == rowAttacked);
     }
+
 
     public void updateNumTimesBeenAttacked() {
         this.numTimesBeenAttacked += 1;
@@ -60,9 +64,12 @@ public class PieceBuzz extends Piece implements Attacker{
 
     public boolean validMovePath(int fromSquareRow, int fromSquareCol,
             int toSquareRow, int toSquareCol) {
-        // You will implement this method in a later step
-        // each Piece will have a different valid path
         return true;
+    }
+
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareCol,
+                                  int toSquareRow, int toSquareCol){
+        return false;
     }
 
     public Piece spawn() {

@@ -63,6 +63,9 @@ abstract class Piece {
 
     public abstract Piece spawn();
 
+    public abstract boolean validSpawnPath(int fromSquareRow, int fromSquareCol,
+                                           int toSquareRow, int toSquareCol);
+
     @Override
     public String toString() {
         return teamColor + " " + symbol;

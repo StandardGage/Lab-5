@@ -59,9 +59,20 @@ public class PieceBlueHen extends Piece implements Recruiter, Attacker {
 
     public boolean validMovePath(int fromSquareRow, int fromSquareCol,
             int toSquareRow, int toSquareCol) {
-        // You will implement this method in a later step
-        // each Piece will have a different valid path
-        return true;
+        if(canFly()){
+            return true;
+        }
+        //non-diagonals
+        else if((toSquareRow == fromSquareRow && toSquareCol == fromSquareCol +- 1) || (toSquareRow == fromSquareRow +-1 && fromSquareCol == toSquareCol)){
+            return true;
+        }
+        //diagonal
+        else if((toSquareRow == fromSquareRow +- 1) && (toSquareCol == fromSquareCol +- 1)){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     public PieceBlueHen spawn() {
@@ -71,18 +82,48 @@ public class PieceBlueHen extends Piece implements Recruiter, Attacker {
         return copyHen;
     }
 
+    @Override
+    public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
+        if(canFly()){
+            return true;
+        }
+        //diagonal
+        else if((toSquareRow == fromSquareRow +- 1) && (toSquareCol == fromSquareCol +- 1)){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public boolean canSpawn() {
         return true;
     }
 
     @Override
     public boolean validRecruitPath(int rowRecruiter, int columnRecruiter, int rowRecruit, int columnRecruit) {
-        return true;
+        if(canFly()){
+            return true;
+        }
+        else if(columnRecruiter == columnRecruit && rowRecruit == rowRecruiter +- 1){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     @Override
-    public boolean validAttackPath(int rowAttacking, int columnAttacking, int RowAttacked, int columnAttacked) {
-        return true;
+    public boolean validAttackPath(int rowAttacking, int columnAttacking, int rowAttacked, int columnAttacked) {
+        if(canFly()){
+            return true;
+        }
+        else if(rowAttacking == rowAttacked && columnAttacked == columnAttacking +- 1){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }
 
