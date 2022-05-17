@@ -16,6 +16,8 @@ public class ActionSpawn extends Action {
     /**
      * Calls the from Piece's speak method and its spawn method, add Piece that was created
      * to the current team, and put that piece on the 'to' square. Then change the turn.
+     *
+     *If toSquare is the hidden piece, abducted timer is increased by 1.
      */
     @Override
     public void performAction() {
@@ -25,6 +27,10 @@ public class ActionSpawn extends Action {
         game.getCurrentTeam().addPieceToTeam(spawnPiece);
         game.getBoardSquares()[toRow][toColumn].setPiece(spawnPiece);
         game.changeTurn();
+
+        if(game.getBoardSquares()[toRow][toColumn].isHiddenSquare()){
+            spawnPiece.setAbducted(spawnPiece.abductedTimer + 1);
+        }
     }
 
 }

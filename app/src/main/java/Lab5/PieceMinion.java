@@ -9,7 +9,7 @@ public class PieceMinion extends Piece implements Recruiter {
     public PieceMinion(char symbol, String teamColor,
             int numRecruits, int numTimesSpawned,
             boolean hidden, boolean original) {
-        super(symbol, teamColor, hidden, original);
+        super(symbol, teamColor, hidden, original, 0);
         this.numRecruits = numRecruits;
         this.numTimesSpawned = numTimesSpawned;
     }

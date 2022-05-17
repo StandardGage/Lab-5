@@ -10,6 +10,8 @@ public class ActionTeleport extends Action{
      * Calls from Piece's speak method, generates a random (non-empty) board square,
      * and switches toPiece's spot with whatever piece is on that random board square.
      * Changes the turn.
+     *
+     * If toSquare is the hidden piece, abducted timer is increased by 1.
      */
     @Override
     public void performAction() {
@@ -30,5 +32,9 @@ public class ActionTeleport extends Action{
         randomSquare.setPiece(teleportedPiece1);
 
         game.changeTurn();
+
+        if(game.getBoardSquares()[toRow][toColumn].isHiddenSquare()){
+            teleportedPiece2.setAbducted(teleportedPiece2.abductedTimer + 1);
+        }
     }
 }

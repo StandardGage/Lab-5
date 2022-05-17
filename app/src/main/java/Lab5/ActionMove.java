@@ -16,6 +16,8 @@ public class ActionMove extends Action{
     /**
      * Calls from piece's speak method, removes it from the 'from' square
      * and places it on the 'to' square, then changes turn.
+     *
+     * If toSquare is the hidden piece, abducted timer is increased by 1.
      */
     @Override
     public void performAction() {
@@ -24,5 +26,9 @@ public class ActionMove extends Action{
         game.getBoardSquares()[fromRow][fromColumn].removePiece();
         game.getBoardSquares()[toRow][toColumn].setPiece(fromPiece);
         game.changeTurn();
+
+        if(game.getBoardSquares()[toRow][toColumn].isHiddenSquare()){
+            fromPiece.setAbducted(fromPiece.abductedTimer + 1);
+        }
     }
 }

@@ -11,6 +11,7 @@ public class BoardSquare {
     private boolean isEmpty = true;
     private Piece piece;
     private String squareColor;
+    private boolean hiddenSquare = false;
 
     public BoardSquare(String squareColor) {
         this.squareColor = squareColor;
@@ -27,6 +28,13 @@ public class BoardSquare {
     public String getSquareColor() {
         return this.squareColor;
     }
+
+    public boolean isHiddenSquare() {
+        return this.hiddenSquare;
+    }
+
+
+    public void setHiddenSquare(boolean hiddenSquare){this.hiddenSquare = hiddenSquare;}
 
     public void setPiece(Piece piece) {
         this.piece = piece;

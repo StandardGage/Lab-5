@@ -11,7 +11,7 @@ public class PieceBlueHen extends Piece implements Recruiter, Attacker {
             String teamColor,
             int numAttacks, int numRecruits,
             boolean hidden, boolean original) {
-        super(symbol, teamColor, hidden, original);
+        super(symbol, teamColor, hidden, original, 0);
         this.numAttacks = numAttacks;
         this.numRecruits = numRecruits;
         updateFly();

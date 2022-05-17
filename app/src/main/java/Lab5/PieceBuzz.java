@@ -12,7 +12,7 @@ public class PieceBuzz extends Piece implements Attacker{
             boolean workingLaser,
             boolean hidden,
             boolean original) {
-        super(symbol, teamColor, hidden, original);
+        super(symbol, teamColor, hidden, original, 0);
         this.numAttacks = numAttacks;
         this.numTimesBeenAttacked = numTimesBeenAttacked;
         this.workingLaser = workingLaser;

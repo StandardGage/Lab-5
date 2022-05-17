@@ -20,6 +20,8 @@ public class ActionAttack extends Action {
      * For attacking same team pieces: call from Piece speak method, remove attacked piece from board &
      * opponents team, create a new Evil Minion Piece and add it to the current team, then place it
      * on the board where the Minion was, change the turn.
+     *
+     * If toSquare is the hidden piece, abducted timer is increased by 1.
      */
     @Override
     public void performAction() {
@@ -29,6 +31,9 @@ public class ActionAttack extends Action {
         game.getOpponentTeam().removePieceFromTeam(attackedPiece);
         game.getBoardSquares()[toRow][toColumn].setPiece(fromPiece);
         game.changeTurn();
+        if(game.getBoardSquares()[toRow][toColumn].isHiddenSquare()){
+            fromPiece.setAbducted(fromPiece.abductedTimer + 1);
+        }
 
         if (fromPiece instanceof PieceEvilMinion) {
             if (attackedPiece instanceof PieceMinion) {
