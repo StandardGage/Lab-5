@@ -16,14 +16,21 @@ public class ActionRecruit extends Action {
     /**
      * Calls the Piece's speak method, remove the recruited piece from opponent's team,
      * and add the Piece that was recruited to the current team. Change the turn.
+     *
+     * If piece is being recruited by spaceship, they lose a turn (sets abducted timer to 1 turn)
      */
     @Override
     public void performAction() {
         Piece fromPiece = game.getBoardSquares()[fromRow][fromColumn].getPiece();
         fromPiece.speak();
-        game.getOpponentTeam().removePieceFromTeam(fromPiece);
-        game.getCurrentTeam().addPieceToTeam(fromPiece);
+        Piece toPiece = game.getBoardSquares()[toRow][toColumn].getPiece();
+        game.getOpponentTeam().removePieceFromTeam(toPiece);
+        game.getCurrentTeam().addPieceToTeam(toPiece);
         game.changeTurn();
+
+        if(fromPiece instanceof PieceSpaceship){
+            toPiece.setAbducted(toPiece.abductedTimer + 1);
+        }
     }
 
 }

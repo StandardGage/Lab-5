@@ -14,12 +14,14 @@ abstract class Piece implements Comparable<Piece> {
     protected String teamColor;
     protected boolean hidden;
     protected boolean original;
+    protected int abductedTimer;
 
-    public Piece(char symbol, String teamColor, boolean hidden, boolean original) {
+    public Piece(char symbol, String teamColor, boolean hidden, boolean original, int abductedTimer) {
         this.symbol = symbol;
         this.teamColor = teamColor;
         this.hidden = hidden;
         this.original = original;
+        this.abductedTimer = abductedTimer;
     }
 
     public char getSymbol() {
@@ -53,6 +55,16 @@ abstract class Piece implements Comparable<Piece> {
     public void setOriginal(boolean original) {
         this.original = original;
     }
+
+    public void setAbducted(int abducted) {
+        this.abductedTimer = abducted;
+    }
+
+    public boolean isAbducted() {
+        return abductedTimer != 0;
+    }
+
+
 
     public abstract void speak();
 

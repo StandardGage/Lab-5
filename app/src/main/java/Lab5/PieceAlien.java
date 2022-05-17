@@ -6,7 +6,7 @@ public class PieceAlien extends Piece implements Attacker, Recruiter{
     private int numRecruits;
 
     public PieceAlien(char symbol, String teamColor, int numAttacks, int numRecruits, boolean hidden, boolean original){
-        super(symbol, teamColor, hidden, original);
+        super(symbol, teamColor, hidden, original, 0);
         this.numAttacks = numAttacks;
         this.numRecruits = numRecruits;
     }

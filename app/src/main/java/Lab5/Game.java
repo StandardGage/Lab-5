@@ -79,6 +79,13 @@ public abstract class Game {
      * changes turn color to the opponent team's color.
      */
     public void changeTurn() {
+        //will make sure abducted pieces that lost a turn will get their turn back
+        for(Piece teamPiece : getOpponentTeam().getTeamPieces()){
+            teamPiece.setAbducted(teamPiece.abductedTimer - 1);
+        }
+        for(Piece teamPiece : getCurrentTeam().getTeamPieces()){
+            teamPiece.setAbducted(teamPiece.abductedTimer - 1);
+        }
         this.turn = getOpponentTeam().getTeamColor();
     }
 
