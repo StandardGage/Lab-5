@@ -13,10 +13,6 @@ public class PieceSpaceship extends PieceAlien{
                 false, true);
     }
 
-    public boolean validTeleportPath(){
-        return true; //as long as there is a piece on the board, it can teleport
-    }
-
     @Override
     public boolean validAttackPath(int rowAttacking, int columnAttacking, int rowAttacked, int columnAttacked) {
         return true; //spaceships can fly, can go anywhere

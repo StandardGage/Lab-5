@@ -64,9 +64,8 @@ abstract class Piece implements Comparable<Piece> {
         return abductedTimer != 0;
     }
 
-
-
     public abstract void speak();
+
 
     public abstract boolean validMovePath(int fromSquareRow, int fromSquareCol,
             int toSquareRow, int toSquareCol);
