@@ -14,8 +14,8 @@ public class ActionAttack extends Action {
     }
 
     /**
-     * For attacking opponent pieces: call the speak method, remove attacked piece from board &
-     * opponents team, move the from square Piece to the to square. Changes the turn.
+     * For attacking opponent pieces: call the speak method, move attacked piece to one side of board,
+     * move the from square Piece to the to square. Changes the turn.
      *
      * For attacking same team pieces: call from Piece speak method, remove attacked piece from board &
      * opponents team, create a new Evil Minion Piece and add it to the current team, then place it
