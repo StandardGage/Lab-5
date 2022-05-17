@@ -29,6 +29,8 @@ public class Controller {
                 9, false, true));
         piecesTeamA.add(new PieceEvilMinion('E', "Blu", 1,
                 1, 4, false, true));
+        piecesTeamA.add(new PieceAlien('A', "Blu", 0, 0, false, true));
+        piecesTeamA.add(new PieceSpaceship('S', "Blu", 0, 0, false, true));
         // Create a team object
         Team teamA = new Team("Blu", piecesTeamA);
 
@@ -43,6 +45,8 @@ public class Controller {
                 true, false, true));
         piecesTeamB.add(new PieceEvilMinion('E', "Red", 1,
                 1, 4, false, true));
+        piecesTeamA.add(new PieceAlien('A', "Red", 0, 0, false, true));
+        piecesTeamA.add(new PieceSpaceship('S', "Red", 0, 0, false, true));
         // Create a team object
         Team teamB = new Team("Red", piecesTeamB);
 
@@ -82,6 +86,9 @@ public class Controller {
             case 'S':
                 ActionSpawn spawn = new ActionSpawn(game, fromRow, fromColumn, toRow, toColumn);
                 spawn.performAction();
+            case 'T':
+                ActionTeleport teleport = new ActionTeleport(game, fromRow, fromColumn, toRow, toColumn);
+                teleport. performAction();
             default:
                 System.out.println("Invalid Action Received");
                 break;

@@ -75,6 +75,7 @@ public class TextView {
                 case 'M':
                 case 'R':
                 case 'S':
+                case 'T':
                     loop = false;
                     break;
 
