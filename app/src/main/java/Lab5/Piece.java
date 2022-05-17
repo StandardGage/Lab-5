@@ -9,7 +9,7 @@ package Lab5;
  * @author Faith Lovell and Gage Schuster
  * @version 1.0
  */
-abstract class Piece {
+abstract class Piece implements Comparable<Piece> {
     protected char symbol;
     protected String teamColor;
     protected boolean hidden;
@@ -69,5 +69,12 @@ abstract class Piece {
     @Override
     public String toString() {
         return teamColor + " " + symbol;
+    }
+
+
+    //FIXME: wtf is wrong with this... is my intelliJ just bugging?
+    @Override
+    public int compareTo(Piece other) {
+        return symbol.compareTo(other.symbol);
     }
 }
