@@ -16,7 +16,7 @@ public class Rules {
      * @param fromColumn index of column the piece is coming from
      * @param toRow index of row the piece is moving to
      * @param toColumn index of column the piece is moving to
-     * @param actionType char M (move), S (spawn), R (recruit), or A(attack)
+     * @param actionType char M (move), S (spawn), R (recruit), A(attack), or T(teleport)
      * @return true if the move can be made, otherwise false
      */
     public static boolean checkValidAction(GameS22 game, int fromRow, int fromColumn, int toRow, int toColumn, char actionType) {
@@ -163,6 +163,32 @@ public class Rules {
                                             }
                                         }
                                     }
+                                }
+                            }
+                        }
+                    }
+                    break;
+
+                case 'T':
+                    //has to have piece on toSquare
+                    if(!(toSquare.isEmpty())) {
+                        //check if PieceAlien
+                        if ((fromPiece instanceof PieceAlien)) {
+                            //PieceAlien can't teleport with PieceBuzz
+                            if (!(toSquare.getPiece() instanceof PieceBuzz)) {
+                                validAction = true;
+                            }
+                        }
+                        //if not PieceAlien,
+                        else{
+                            //total teleports has to be below limit
+                            if(game.getTotalTeleports() < game.getMaxTeleports()){
+                                //if fromPiece is within one(non diagonal) space of a PieceAlien
+                                if(game.getBoardSquares()[fromRow + 1][fromColumn].getPiece() instanceof PieceAlien ||
+                                        game.getBoardSquares()[fromRow - 1][fromColumn].getPiece() instanceof PieceAlien ||
+                                        game.getBoardSquares()[fromRow][fromColumn + 1].getPiece() instanceof PieceAlien ||
+                                        game.getBoardSquares()[fromRow][fromColumn - 1].getPiece() instanceof PieceAlien){
+                                    validAction = true;
                                 }
                             }
                         }

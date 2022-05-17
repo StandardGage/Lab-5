@@ -7,9 +7,20 @@ package Lab5;
  */
 
 public class GameS22 extends Game {
+    private int totalTeleports;
+    private int maxTeleports;
+
+
     public GameS22(int numRows, int numColumns, Team team1, Team team2){
         super(numRows, numColumns, team1, team2);
+        this.totalTeleports = 0;
+        this.maxTeleports = (int) (Math.random() * 75);
     }
+
+    public void setTotalTeleports(int teleports){this.totalTeleports = teleports;}
+    public int getTotalTeleports(){return this.totalTeleports;}
+    public int getMaxTeleports(){return this.maxTeleports;}
+
 
     /**
      * Determines if there is a winner

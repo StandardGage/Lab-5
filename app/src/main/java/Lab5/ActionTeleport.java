@@ -36,5 +36,6 @@ public class ActionTeleport extends Action{
         if(game.getBoardSquares()[toRow][toColumn].isHiddenSquare()){
             teleportedPiece2.setAbducted(teleportedPiece2.abductedTimer + 1);
         }
+        game.setTotalTeleports(game.getTotalTeleports() + 1);
     }
 }

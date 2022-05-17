@@ -84,9 +84,8 @@ abstract class Piece implements Comparable<Piece> {
     }
 
 
-    //FIXME: wtf is wrong with this... is my intelliJ just bugging?
     @Override
     public int compareTo(Piece other) {
-        return symbol.compareTo(other.symbol);
+        return Character.compare(symbol, other.symbol);
     }
 }
