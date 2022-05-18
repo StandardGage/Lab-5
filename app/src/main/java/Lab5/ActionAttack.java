@@ -36,6 +36,7 @@ public class ActionAttack extends Action {
         }
 
         if (fromPiece instanceof PieceEvilMinion) {
+            ((PieceEvilMinion) fromPiece).setNumAttacks(((PieceEvilMinion) fromPiece).getNumAttacks() + 1);
             if (attackedPiece instanceof PieceMinion) {
                 PieceEvilMinion eMinion = new PieceEvilMinion();
                 game.getOpponentTeam().addPieceToTeam(eMinion);
