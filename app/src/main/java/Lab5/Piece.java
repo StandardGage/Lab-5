@@ -21,6 +21,7 @@ abstract class Piece implements Comparable<Piece> {
         this.teamColor = teamColor;
         this.hidden = hidden;
         this.original = original;
+        //New Extended Piece Modification (spaceships will freeze piece they recruit)
         this.abductedTimer = abductedTimer;
     }
 

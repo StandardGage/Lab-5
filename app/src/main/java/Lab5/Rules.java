@@ -119,7 +119,13 @@ public class Rules {
                             if (!(toSquare.isEmpty())) {
                                 //check if toSquare piece belongs to Opponent team
                                 if (toSquare.getPiece().getTeamColor().equals(game.getOpponentTeam().getTeamColor())) {
-                                    validAction = true;
+                                    //PieceSpaceship can only interact with Aliens
+                                    //New Extended Piece Modification
+                                    if (fromPiece instanceof PieceSpaceship) {
+                                        if (toSquare.getPiece() instanceof PieceAlien){
+                                            validAction = true;
+                                        }
+                                    }
                                 }
                             }
                         }
@@ -152,6 +158,20 @@ public class Rules {
                                             validAction = true;
                                         }
                                     }
+                                    //PieceAlien can't attack Buzz
+                                    //New Piece Modification
+                                    if (fromPiece instanceof PieceAlien){
+                                        if (toSquare.getPiece() instanceof PieceBuzz){
+                                            validAction = true;
+                                        }
+                                    }
+                                    //PieceSpaceship can only interact with Aliens
+                                    //New Extended Piece Modification
+                                    if (fromPiece instanceof PieceSpaceship) {
+                                        if (toSquare.getPiece() instanceof PieceAlien){
+                                            validAction = true;
+                                        }
+                                    }
                                 }
                                 else{
                                     //if to piece is current team, evil minion may attack...
@@ -169,9 +189,11 @@ public class Rules {
                     }
                     break;
 
+                //New Action Modification (added to rules)
                 case 'T':
                     //has to have piece on toSquare
                     if(!(toSquare.isEmpty())) {
+                        //New Piece Modification (Aliens have different teleporting rules)
                         //check if PieceAlien
                         if ((fromPiece instanceof PieceAlien)) {
                             //PieceAlien can't teleport with PieceBuzz
@@ -182,13 +204,19 @@ public class Rules {
                         //if not PieceAlien,
                         else{
                             //total teleports has to be below limit
-                            if(game.getTotalTeleports() < game.getMaxTeleports()){
+                            if(game.getTotalTeleports() < game.getMaxTeleports()){ //New Rule Modification (limits amount of teleports for non-aliens)
                                 //if fromPiece is within one(non diagonal) space of a PieceAlien
                                 if(game.getBoardSquares()[fromRow + 1][fromColumn].getPiece() instanceof PieceAlien ||
                                         game.getBoardSquares()[fromRow - 1][fromColumn].getPiece() instanceof PieceAlien ||
                                         game.getBoardSquares()[fromRow][fromColumn + 1].getPiece() instanceof PieceAlien ||
                                         game.getBoardSquares()[fromRow][fromColumn - 1].getPiece() instanceof PieceAlien){
-                                    validAction = true;
+                                    //PieceSpaceship can only interact with Aliens
+                                    //New Extended Piece Modification
+                                    if (fromPiece instanceof PieceSpaceship) {
+                                        if (toSquare.getPiece() instanceof PieceAlien){
+                                            validAction = true;
+                                        }
+                                    }
                                 }
                             }
                         }

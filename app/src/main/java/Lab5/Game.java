@@ -31,7 +31,7 @@ public abstract class Game {
         for (Piece teamPiece : team2.getTeamPieces()) {
             this.board.findRandomEmptySpace().setPiece(teamPiece);
         }
-        this.board.findRandomEmptySpace().setHiddenSquare(true);
+        this.board.findRandomEmptySpace().setHiddenSquare(true); //Board Square Modification (randomly places hidden square)
     }
 
     public Game(int rows, int columns, Team team1, Team team2) {

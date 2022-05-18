@@ -14,9 +14,10 @@ public class GameS22 extends Game {
     public GameS22(int numRows, int numColumns, Team team1, Team team2){
         super(numRows, numColumns, team1, team2);
         this.totalTeleports = 0;
-        this.maxTeleports = (int) (Math.random() * 75);
+        this.maxTeleports = (int) (Math.random() * 75); //New Rule Modification (there are a max amount of teleports)
     }
 
+    //New Rule Modification
     public void setTotalTeleports(int teleports){this.totalTeleports = teleports;}
     public int getTotalTeleports(){return this.totalTeleports;}
     public int getMaxTeleports(){return this.maxTeleports;}

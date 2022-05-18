@@ -28,6 +28,7 @@ public class ActionRecruit extends Action {
         game.getCurrentTeam().addPieceToTeam(toPiece);
         game.changeTurn();
 
+        //New Extended Piece Modification (spaceships will freeze piece they recruit)
         if(fromPiece instanceof PieceSpaceship){
             toPiece.setAbducted(toPiece.abductedTimer + 1);
         }

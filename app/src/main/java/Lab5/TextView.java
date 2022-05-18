@@ -75,7 +75,7 @@ public class TextView {
                 case 'M':
                 case 'R':
                 case 'S':
-                case 'T':
+                case 'T': //New Action Modification (added to list of valid inputs)
                     loop = false;
                     break;
 
@@ -103,7 +103,7 @@ public class TextView {
             System.out.println("Enter the row and column of the piece to use.");
             fromRow = getValidInt(-1, rows, scr);
             fromColumn = getValidInt(-1, cols, scr);
-        } while (game.getBoardSquares()[fromRow][fromColumn].getPiece() == null);
+        } while (game.getBoardSquares()[fromRow][fromColumn].getPiece() == null && game.getBoardSquares()[fromRow][fromColumn].getPiece().isAbducted()); //New Extended Piece Modification (abducted pieces can't be used)
         System.out.println("Enter the row and column of the square to perform action");
         toRow = getValidInt(-1, rows, scr);
         toColumn = getValidInt(-1, cols, scr);

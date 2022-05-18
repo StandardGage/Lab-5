@@ -17,7 +17,7 @@ public class ActionMove extends Action{
      * Calls from piece's speak method, removes it from the 'from' square
      * and places it on the 'to' square, then changes turn.
      *
-     * If toSquare is the hidden piece, abducted timer is increased by 1.
+     * If toSquare is the hidden piece, abducted timer is increased by 1. //BoardSquare Modification
      */
     @Override
     public void performAction() {

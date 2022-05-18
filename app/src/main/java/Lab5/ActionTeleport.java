@@ -11,7 +11,7 @@ public class ActionTeleport extends Action{
      * and switches toPiece's spot with whatever piece is on that random board square.
      * Changes the turn.
      *
-     * If toSquare is the hidden piece, abducted timer is increased by 1.
+     * If toSquare is the hidden piece, abducted timer is increased by 1. //Board Square Modification
      */
     @Override
     public void performAction() {

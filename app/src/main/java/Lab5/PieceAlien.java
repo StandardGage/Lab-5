@@ -1,6 +1,6 @@
 package Lab5;
 
-//New Piece Modification
+//New Piece Modification (whole piece's class)
 public class PieceAlien extends Piece implements Attacker, Recruiter{
     private int numAttacks;
     private int numRecruits;

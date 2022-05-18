@@ -21,7 +21,7 @@ public class ActionAttack extends Action {
      * opponents team, create a new Evil Minion Piece and add it to the current team, then place it
      * on the board where the Minion was, change the turn.
      *
-     * If toSquare is the hidden piece, abducted timer is increased by 1.
+     * If toSquare is the hidden piece, abducted timer is increased by 1. //Board Square Modification
      */
     @Override
     public void performAction() {
