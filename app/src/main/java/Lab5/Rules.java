@@ -27,9 +27,10 @@ public class Rules {
         boolean toFromBounds = false;
         boolean fromIsCurrentTeam = false;
         boolean validPath = false;
+        boolean notAbducted = false;
 
-        //checks four conditions necessary for each rule: indexes in bounds, from piece exists & belongs to current team,
-        // & to-from path is valid.
+        //checks five conditions necessary for each rule: indexes in bounds, from piece exists & belongs to current team,
+        //piece has not been abducted, & to-from path is valid.
         if (game.getGameBoard().inBounds(fromRow, fromColumn) || game.getGameBoard().inBounds(toRow, toColumn)) {
             toFromBounds = true;
         }
@@ -39,7 +40,11 @@ public class Rules {
         if(fromPiece.validMovePath(fromRow, fromColumn, toRow, toColumn)) { //path is valid
             validPath = true;
         }
-            if (toFromBounds && fromIsCurrentTeam && validPath) {
+        //New Extended Piece Modification & Board Square Modification (both cause pieces to skip turns, so we need to check)
+        if(fromPiece.isAbducted()){
+            notAbducted = true;
+        }
+            if (toFromBounds && fromIsCurrentTeam && validPath && notAbducted) {
             switch (actionType) {
                 //I split a lot of the if statements up in the cases just for readability
                 //ex I know in case S I could combine it to (fromPiece.canSpawn() && toSquare.isEmpty)
