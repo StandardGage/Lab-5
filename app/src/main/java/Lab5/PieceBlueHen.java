@@ -62,17 +62,8 @@ public class PieceBlueHen extends Piece implements Recruiter, Attacker {
         if(canFly()){
             return true;
         }
-        //non-diagonals
-        else if((toSquareRow == fromSquareRow && toSquareCol == fromSquareCol +- 1) || (toSquareRow == fromSquareRow +-1 && fromSquareCol == toSquareCol)){
-            return true;
-        }
-        //diagonal
-        else if((toSquareRow == fromSquareRow +- 1) && (toSquareCol == fromSquareCol +- 1)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        // toSquares are within 1 square from fromSquares in any direction
+        return Math.abs(fromSquareRow - toSquareRow) <= 1 && Math.abs(fromSquareCol - toSquareCol) <= 1;
     }
 
     public PieceBlueHen spawn() {

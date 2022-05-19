@@ -53,7 +53,6 @@ public class TextView {
             } catch (Exception e) {
                 scr.nextLine();
             }
-            System.out.println();
         }
         return input;
     }
@@ -99,12 +98,23 @@ public class TextView {
         action = getUsersNextActionType(scr);
         int rows = game.getGameBoard().getNumRows();
         int cols = game.getGameBoard().getNumColumns();
-        do {
+        while (true) {
             System.out.println("Enter the row and column of the piece to use.");
             fromRow = getValidInt(-1, rows, scr);
             fromColumn = getValidInt(-1, cols, scr);
-        } while (game.getBoardSquares()[fromRow][fromColumn].getPiece() == null && game.getBoardSquares()[fromRow][fromColumn].getPiece().isAbducted()); //New Extended Piece Modification (abducted pieces can't be used)
-        System.out.println("Enter the row and column of the square to perform action");
+            if(game.getBoardSquares()[fromRow][fromColumn].getPiece() != null && !game.getBoardSquares()[fromRow][fromColumn].getPiece().isAbducted()) {
+                if(game.getBoardSquares()[fromRow][fromColumn].getPiece().getTeamColor().equals(game.getCurrentTeam().getTeamColor())) {
+                    break;
+                } else {
+                    System.out.println("\nThis is an opponent's piece\n");
+                }
+            } else if(game.getBoardSquares()[fromRow][fromColumn].getPiece() == null) {
+                System.out.println("\nThere is no piece here.\n");
+            } else {
+                System.out.println("\nThis piece is still abducted for " + game.getBoardSquares()[fromRow][fromColumn].getPiece().abductedTimer + "\n");
+            }
+        }
+        System.out.println("\nEnter the row and column of the square to perform action");
         toRow = getValidInt(-1, rows, scr);
         toColumn = getValidInt(-1, cols, scr);
     }

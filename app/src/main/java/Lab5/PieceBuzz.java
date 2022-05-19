@@ -49,7 +49,7 @@ public class PieceBuzz extends Piece implements Attacker{
         if(rowAttacking == rowAttacked){
             return true;
         } //mutually exclusive so the two options can be split into if-else statement
-        else return columnAttacking == columnAttacking && (rowAttacking + -2 == rowAttacked);
+        else return columnAttacking == columnAttacked && (Math.abs(rowAttacking - rowAttacked) <= 2);
     }
 
 

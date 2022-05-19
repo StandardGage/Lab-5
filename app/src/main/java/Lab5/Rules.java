@@ -27,7 +27,7 @@ public class Rules {
         boolean toFromBounds = false;
         boolean fromIsCurrentTeam = false;
         boolean validPath = false;
-        boolean notAbducted = false;
+        boolean notAbducted = true;
 
         //checks five conditions necessary for each rule: indexes in bounds, from piece exists & belongs to current team,
         //piece has not been abducted, & to-from path is valid.
@@ -39,10 +39,12 @@ public class Rules {
         }
         if(fromPiece.validMovePath(fromRow, fromColumn, toRow, toColumn)) { //path is valid
             validPath = true;
+        } else {
+            System.out.println("\nYour chosen piece cannot move here.\n");
         }
         //New Extended Piece Modification & Board Square Modification (both cause pieces to skip turns, so we need to check)
         if(fromPiece.isAbducted()){
-            notAbducted = true;
+            notAbducted = false;
         }
             if (toFromBounds && fromIsCurrentTeam && validPath && notAbducted) {
             switch (actionType) {

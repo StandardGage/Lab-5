@@ -14,7 +14,7 @@ class PieceTest {
         try {
             Class<Piece> clazz = Piece.class;
             Constructor<Piece> ctor = clazz.getDeclaredConstructor(char.class, String.class,
-                    boolean.class, boolean.class);
+                    boolean.class, boolean.class, int.class);
             try {
                 ctor.newInstance('H', "Red", false, false);
                 fail("Should not be able to create an instance of Piece");

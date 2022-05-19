@@ -82,10 +82,14 @@ public abstract class Game {
     public void changeTurn() {
         //will make sure abducted pieces that lost a turn will get their turn back
         for(Piece teamPiece : getOpponentTeam().getTeamPieces()){
-            teamPiece.setAbducted(teamPiece.abductedTimer - 1);
+            if(teamPiece.isAbducted()) {
+                teamPiece.setAbducted(teamPiece.abductedTimer - 1);
+            }
         }
         for(Piece teamPiece : getCurrentTeam().getTeamPieces()){
-            teamPiece.setAbducted(teamPiece.abductedTimer - 1);
+            if(teamPiece.isAbducted()) {
+                teamPiece.setAbducted(teamPiece.abductedTimer - 1);
+            }
         }
         this.turn = getOpponentTeam().getTeamColor();
     }

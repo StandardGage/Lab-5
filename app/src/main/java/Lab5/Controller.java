@@ -106,6 +106,7 @@ public class Controller {
                 view.getNextPlayersAction(game);
                 valid = Rules.checkValidAction(game, view.fromRow, view.fromColumn, view.toRow, view.toColumn,
                         view.action);
+                view.updateView(game);
             } while (!valid);
             carryOutAction(view.fromRow, view.fromColumn, view.toRow, view.toColumn, view.action);
             view.updateView(game);
