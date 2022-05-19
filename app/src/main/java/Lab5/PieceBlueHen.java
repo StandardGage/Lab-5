@@ -79,7 +79,7 @@ public class PieceBlueHen extends Piece implements Recruiter, Attacker {
             return true;
         }
         //diagonal
-        else if((toSquareRow == fromSquareRow +- 1) && (toSquareCol == fromSquareCol +- 1)){
+        else if((toSquareRow == fromSquareRow + 1 || toSquareRow == fromSquareRow - 1) && (toSquareCol == fromSquareCol + 1 || toSquareCol == fromSquareCol -1)){
             return true;
         }
         else{
@@ -96,7 +96,7 @@ public class PieceBlueHen extends Piece implements Recruiter, Attacker {
         if(canFly()){
             return true;
         }
-        else if(columnRecruiter == columnRecruit && rowRecruit == rowRecruiter +- 1){
+        else if(columnRecruiter == columnRecruit && (rowRecruit == rowRecruiter + 1 || rowRecruit == rowRecruiter - 1)){
             return true;
         }
         else{
@@ -109,7 +109,7 @@ public class PieceBlueHen extends Piece implements Recruiter, Attacker {
         if(canFly()){
             return true;
         }
-        else if(rowAttacking == rowAttacked && columnAttacked == columnAttacking +- 1){
+        else if(rowAttacking == rowAttacked && (columnAttacked == columnAttacking + 1 || columnAttacked == columnAttacking - 1)){
             return true;
         }
         else{

@@ -58,11 +58,11 @@ public class TextView {
     }
 
     /**
-     * Takes user input until they enter 'A','M','R',or 'S'
+     * Takes user input until they enter 'A','M','R', 'S', or 'T'
      * -not case sensitive
      * 
      * @param scr Scanner for user input
-     * @return input once user inputs 'A','M','R', or 'S'
+     * @return input once user inputs 'A','M','R', 'S', or 'T'
      */
     public static char getUsersNextActionType(Scanner scr) {
         char input = 'A';
@@ -94,7 +94,7 @@ public class TextView {
     public void getNextPlayersAction(GameS22 game) {
         Scanner scr = new Scanner(System.in);
 
-        System.out.println("Enter Action:");
+        System.out.println("Enter Action A, M, R, S, or T:");
         action = getUsersNextActionType(scr);
         int rows = game.getGameBoard().getNumRows();
         int cols = game.getGameBoard().getNumColumns();

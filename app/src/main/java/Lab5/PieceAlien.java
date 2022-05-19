@@ -31,7 +31,7 @@ public class PieceAlien extends Piece implements Attacker, Recruiter{
     @Override
     public boolean validAttackPath(int rowAttacking, int columnAttacking, int rowAttacked, int columnAttacked) {
         //forward diagonals
-        return rowAttacked == rowAttacking + 1 && columnAttacked == columnAttacking + -1;
+        return rowAttacked == rowAttacking + 1 && (columnAttacked == columnAttacking + 1 || columnAttacked == columnAttacking - 1);
     }
 
     @Override
@@ -81,11 +81,11 @@ public class PieceAlien extends Piece implements Attacker, Recruiter{
     public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
         //all directions by one square:
         //non-diagonals
-        if ((toSquareRow == fromSquareRow && toSquareCol == fromSquareCol + -1) || (toSquareRow == fromSquareRow + -1 && fromSquareCol == toSquareCol)) {
+        if ((toSquareRow == fromSquareRow && (toSquareCol == fromSquareCol + 1 || toSquareCol == fromSquareCol - 1)) || ((toSquareRow == fromSquareRow + 1 || toSquareRow == fromSquareRow - 1) && fromSquareCol == toSquareCol)) {
             return true;
         }
         //diagonal
-        else if ((toSquareRow == fromSquareRow + -1) && (toSquareCol == fromSquareCol + -1)) {
+        else if ((toSquareRow == fromSquareRow + 1 || toSquareRow == fromSquareRow - 1) && (toSquareCol == fromSquareCol + 1 || toSquareCol == fromSquareCol - 1)) {
             return true;
         } else {
             return false;

@@ -45,8 +45,8 @@ public class Controller {
                 true, false, true));
         piecesTeamB.add(new PieceEvilMinion('E', "Red", 1,
                 1, 4, false, true));
-        piecesTeamA.add(new PieceAlien('A', "Red", 0, 0, false, true));
-        piecesTeamA.add(new PieceSpaceship('S', "Red", 0, 0, false, true));
+        piecesTeamB.add(new PieceAlien('A', "Red", 0, 0, false, true));
+        piecesTeamB.add(new PieceSpaceship('S', "Red", 0, 0, false, true));
         // Create a team object
         Team teamB = new Team("Red", piecesTeamB);
 

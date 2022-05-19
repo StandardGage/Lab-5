@@ -22,11 +22,11 @@ public class PieceSpaceship extends PieceAlien{
     public boolean validRecruitPath(int rowRecruiter, int columnRecruiter, int rowRecruit, int columnRecruit) {
         //all directions by one square:
         //non-diagonals
-        if ((rowRecruit == rowRecruiter && columnRecruit == columnRecruiter + -1) || (rowRecruit == rowRecruiter + -1 && columnRecruiter == columnRecruit)) {
+        if ((rowRecruit == rowRecruiter && (columnRecruit == columnRecruiter + 1 || columnRecruit == columnRecruiter - 1)) || ((rowRecruit == rowRecruiter + 1 || rowRecruit == rowRecruiter - 1) && columnRecruiter == columnRecruit)) {
             return true;
         }
         //diagonal
-        else if ((rowRecruit == rowRecruiter + -1) && (columnRecruit == columnRecruiter + -1)) {
+        else if (((rowRecruit == rowRecruiter + 1 || rowRecruit == rowRecruiter - 1)) && ((columnRecruit == columnRecruiter + 1 || columnRecruit == columnRecruiter - 1))) {
             return true;
         } else {
             return false;
