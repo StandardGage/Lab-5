@@ -47,6 +47,7 @@ public class ActionTeleport extends Action{
         game.changeTurn();
 
         if(game.getBoardSquares()[toRow][toColumn].isHiddenSquare()){
+            System.out.println("Piece has been abducted!");
             teleportedPiece2.setAbducted(teleportedPiece2.abductedTimer + 1);
         }
         game.setTotalTeleports(game.getTotalTeleports() + 1);

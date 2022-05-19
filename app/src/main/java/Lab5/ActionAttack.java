@@ -33,6 +33,7 @@ public class ActionAttack extends Action {
         game.getBoardSquares()[toRow][toColumn].setPiece(fromPiece);
         game.changeTurn();
         if(game.getBoardSquares()[toRow][toColumn].isHiddenSquare()){
+            System.out.println("Piece has been abducted!");
             fromPiece.setAbducted(fromPiece.abductedTimer + 1);
         }
 
