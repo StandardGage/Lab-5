@@ -28,6 +28,9 @@ public class ActionSpawn extends Action {
         game.getBoardSquares()[toRow][toColumn].setPiece(spawnPiece);
         game.changeTurn();
 
+        if (fromPiece instanceof PieceMinion){
+            ((PieceMinion) fromPiece).incrementNumTimesSpawned();
+        }
         if(game.getBoardSquares()[toRow][toColumn].isHiddenSquare()){
             spawnPiece.setAbducted(spawnPiece.abductedTimer + 1);
         }
