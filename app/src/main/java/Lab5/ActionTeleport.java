@@ -22,8 +22,21 @@ public class ActionTeleport extends Action{
         //finds random non-empty square
         BoardSquare randomSquare = game.getBoardSquares()[(int) (Math.random() * game.getGameBoard().getNumRows())][(int) (Math.random()
                     * game.getGameBoard().getNumColumns())];
-        while (randomSquare.isEmpty()) {
-            randomSquare = game.getBoardSquares()[(int) (Math.random() * game.getGameBoard().getNumRows())][(int) (Math.random() * game.getGameBoard().getNumColumns())];
+        //New Rule Modification (only aliens can be teleported after certain # of teleports
+        if(!(game.getTotalTeleports() < game.getMaxTeleports())) {
+            while (randomSquare.isEmpty()) { //picks random nonempty space
+                randomSquare = game.getBoardSquares()[(int) (Math.random() * game.getGameBoard().getNumRows())][(int) (Math.random() * game.getGameBoard().getNumColumns())];
+            }
+            while(!(randomSquare.getPiece() instanceof PieceAlien)){ //if nonempty space does not contain alien,
+                while (randomSquare.isEmpty()) { //continues to find nonempty spaces until there is an alien
+                    randomSquare = game.getBoardSquares()[(int) (Math.random() * game.getGameBoard().getNumRows())][(int) (Math.random() * game.getGameBoard().getNumColumns())];
+                }
+            }
+        }
+        else{
+            while (randomSquare.isEmpty()) {
+                randomSquare = game.getBoardSquares()[(int) (Math.random() * game.getGameBoard().getNumRows())][(int) (Math.random() * game.getGameBoard().getNumColumns())];
+            }
         }
 
         //swaps pieces

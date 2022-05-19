@@ -200,34 +200,30 @@ public class Rules {
                 case 'T':
                     //has to have piece on toSquare
                     if(!(toSquare.isEmpty())) {
-                        //New Piece Modification (Aliens have different teleporting rules)
-                        //check if PieceAlien
-                        if ((fromPiece instanceof PieceAlien)) {
-                            //PieceAlien can't teleport with PieceBuzz
-                            if (!(toSquare.getPiece() instanceof PieceBuzz)) {
-                                validAction = true;
+                        //New Piece Modification (Aliens can't perform new action)
+                        if(!(fromPiece instanceof PieceAlien)){
+                            //Spaceships can always use teleport & can only interact with aliens
+                            //New Extended Piece Modification
+                            if(fromPiece instanceof PieceSpaceship) {
+                                if (toSquare.getPiece() instanceof PieceAlien) {
+                                    validAction = true;
+                                }
                             }
-                        }
-                        //if not PieceAlien,
-                        else{
                             //total teleports has to be below limit
-                            if(game.getTotalTeleports() < game.getMaxTeleports()){ //New Rule Modification (limits amount of teleports for non-aliens)
-                                //if fromPiece is within one(non diagonal) space of a PieceAlien
-                                if(game.getBoardSquares()[fromRow + 1][fromColumn].getPiece() instanceof PieceAlien ||
-                                        game.getBoardSquares()[fromRow - 1][fromColumn].getPiece() instanceof PieceAlien ||
-                                        game.getBoardSquares()[fromRow][fromColumn + 1].getPiece() instanceof PieceAlien ||
-                                        game.getBoardSquares()[fromRow][fromColumn - 1].getPiece() instanceof PieceAlien){
-                                    //PieceSpaceship can only interact with Aliens
-                                    //New Extended Piece Modification
-                                    if (fromPiece instanceof PieceSpaceship) {
-                                        if (toSquare.getPiece() instanceof PieceAlien){
-                                            validAction = true;
-                                        }
+                            else{
+                                if(game.getTotalTeleports() < game.getMaxTeleports()){ //New Rule Modification (limits amount of teleports for non-aliens)
+                                    //if fromPiece is within one(non diagonal) space of a PieceAlien
+                                    if(game.getBoardSquares()[fromRow + 1][fromColumn].getPiece() instanceof PieceAlien ||
+                                            game.getBoardSquares()[fromRow - 1][fromColumn].getPiece() instanceof PieceAlien ||
+                                            game.getBoardSquares()[fromRow][fromColumn + 1].getPiece() instanceof PieceAlien ||
+                                            game.getBoardSquares()[fromRow][fromColumn - 1].getPiece() instanceof PieceAlien){
+                                        validAction = true;
                                     }
                                 }
                             }
+
+                            }
                         }
-                    }
                     break;
             }
         }
