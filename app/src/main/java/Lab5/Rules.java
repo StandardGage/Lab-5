@@ -29,89 +29,91 @@ public class Rules {
         boolean validPath = false;
         boolean notAbducted = true;
 
-        //checks five conditions necessary for each rule: indexes in bounds, from piece exists & belongs to current team,
-        //piece has not been abducted, & to-from path is valid.
+        //checks four conditions necessary for each rule: indexes in bounds, from piece exists & belongs to current team,
+        //piece has not been abducted.
         if (game.getGameBoard().inBounds(fromRow, fromColumn) || game.getGameBoard().inBounds(toRow, toColumn)) {
             toFromBounds = true;
         }
         if (!(fromSquare.isEmpty()) && fromPiece.getTeamColor().equals(game.getCurrentTeam().getTeamColor())) {
             fromIsCurrentTeam = true;
         }
-        if(fromPiece.validMovePath(fromRow, fromColumn, toRow, toColumn)) { //path is valid
-            validPath = true;
-        } else {
-            System.out.println("\nYour chosen piece cannot move here.\n");
-        }
         //New Extended Piece Modification & Board Square Modification (both cause pieces to skip turns, so we need to check)
         if(fromPiece.isAbducted()){
             notAbducted = false;
         }
-            if (toFromBounds && fromIsCurrentTeam && validPath && notAbducted) {
+            if (toFromBounds && fromIsCurrentTeam && notAbducted) {
             switch (actionType) {
                 //I split a lot of the if statements up in the cases just for readability
                 //ex I know in case S I could combine it to (fromPiece.canSpawn() && toSquare.isEmpty)
                 //was just easier to do so we can make sure all rules are covered step-by-step
                 case 'M':
-                    if(toSquare.isEmpty()){ //no piece on to square
+                    if(fromPiece.validMovePath(fromRow, fromColumn, toRow, toColumn)) { //path is valid
+                        validPath = true;
+                    } else {
+                        System.out.println("\nYour chosen piece cannot move here.\n");
+                    }
+                    if(toSquare.isEmpty() && validPath){ //no piece on to square
                         validAction = true;
                     }
                     break;
 
                 case 'S':
-                    //check if piece can spawn
-                    if(fromPiece.canSpawn()){
-                        //checks to square is empty
-                        if(toSquare.isEmpty()){
-                            //PieceMinion spawn path
-                            if(fromPiece instanceof PieceMinion){
-                                //determining closest corner
-                                int endRow = game.getGameBoard().getNumRows() - 1;
-                                int endColumn = game.getGameBoard().getNumColumns() - 1;
-                                int distBottomLeft = (int) Math.sqrt((endRow - fromRow)*(endRow-fromRow) + (fromColumn)*(fromColumn));
-                                int distTopLeft = fromRow + fromColumn;
-                                int distBottomRight = (int) Math.sqrt((endRow-fromRow)*(endRow-fromRow) + (endColumn-fromColumn)*(endColumn-fromColumn));
-                                int distTopRight = (int) Math.sqrt((fromRow)*(fromRow) + (endColumn - fromColumn)*(endColumn-fromColumn));
-                                //finding closest corner
-                                int shortestDist;
-                                if(distBottomLeft < distTopLeft && distBottomLeft < distBottomRight && distBottomLeft < distTopRight){
-                                    shortestDist = distBottomLeft;
-                                }
-                                else if(distTopLeft < distBottomLeft && distTopLeft < distBottomRight && distTopLeft < distTopRight){
-                                    shortestDist = distTopLeft;
-                                }
-                                else if(distBottomRight < distBottomLeft && distBottomRight < distTopRight && distBottomRight < distTopLeft){
-                                    shortestDist = distBottomRight;
-                                }
-                                else if(distTopRight < distBottomLeft && distTopRight < distBottomRight && distTopRight < distTopLeft){
-                                    shortestDist = distBottomLeft;
-                                }
-                                else{ //in case all distances are equal
-                                    shortestDist = -1;
-                                }
-                                //checking if move is valid (finally)
-                                //all distances equal (any corner valid)
-                                if((toRow == 0 && toColumn == 0) || (toRow == endRow && toColumn == 0) || (toRow == 0 && toColumn == endColumn) || (toRow == endRow && toColumn == endColumn)){
+                    if(fromPiece.validSpawnPath(fromRow, fromColumn, toRow, toColumn)) { //path is valid
+                        validPath = true;
+                    } else {
+                        System.out.println("\nYour chosen piece cannot spawn here.\n");
+                    }
+                    if(validPath) {
+                        //check if piece can spawn
+                        if (fromPiece.canSpawn()) {
+                            //checks to square is empty
+                            if (toSquare.isEmpty()) {
+                                //PieceMinion spawn path
+                                if (fromPiece instanceof PieceMinion) {
+                                    //determining closest corner
+                                    int endRow = game.getGameBoard().getNumRows() - 1;
+                                    int endColumn = game.getGameBoard().getNumColumns() - 1;
+                                    int distBottomLeft = (int) Math.sqrt((endRow - fromRow) * (endRow - fromRow) + (fromColumn) * (fromColumn));
+                                    int distTopLeft = fromRow + fromColumn;
+                                    int distBottomRight = (int) Math.sqrt((endRow - fromRow) * (endRow - fromRow) + (endColumn - fromColumn) * (endColumn - fromColumn));
+                                    int distTopRight = (int) Math.sqrt((fromRow) * (fromRow) + (endColumn - fromColumn) * (endColumn - fromColumn));
+                                    //finding closest corner
+                                    int shortestDist;
+                                    if (distBottomLeft < distTopLeft && distBottomLeft < distBottomRight && distBottomLeft < distTopRight) {
+                                        shortestDist = distBottomLeft;
+                                    } else if (distTopLeft < distBottomLeft && distTopLeft < distBottomRight && distTopLeft < distTopRight) {
+                                        shortestDist = distTopLeft;
+                                    } else if (distBottomRight < distBottomLeft && distBottomRight < distTopRight && distBottomRight < distTopLeft) {
+                                        shortestDist = distBottomRight;
+                                    } else if (distTopRight < distBottomLeft && distTopRight < distBottomRight && distTopRight < distTopLeft) {
+                                        shortestDist = distBottomLeft;
+                                    } else { //in case all distances are equal
+                                        shortestDist = -1;
+                                    }
+                                    //checking if move is valid (finally)
+                                    //all distances equal (any corner valid)
+                                    if ((toRow == 0 && toColumn == 0) || (toRow == endRow && toColumn == 0) || (toRow == 0 && toColumn == endColumn) || (toRow == endRow && toColumn == endColumn)) {
+                                        validAction = true;
+                                    }
+                                    //top left
+                                    if ((toRow == 0 && toColumn == 0) && (shortestDist == distTopLeft)) {
+                                        validAction = true;
+                                    }
+                                    //bottom left
+                                    if ((toRow == endRow && toColumn == 0) && (shortestDist == distBottomLeft)) {
+                                        validAction = true;
+                                    }
+                                    //top right
+                                    if ((toRow == 0 && toColumn == endColumn) && (shortestDist == distTopRight)) {
+                                        validAction = true;
+                                    }
+                                    //bottom right
+                                    if ((toRow == endRow && toColumn == endColumn) && (shortestDist == distBottomRight)) {
+                                        validAction = true;
+                                    }
+                                } else {
                                     validAction = true;
                                 }
-                                //top left
-                                if((toRow == 0 && toColumn == 0) && (shortestDist == distTopLeft)){
-                                    validAction = true;
-                                }
-                                //bottom left
-                                if((toRow == endRow && toColumn == 0) && (shortestDist == distBottomLeft)){
-                                    validAction = true;
-                                }
-                                //top right
-                                if((toRow == 0 && toColumn == endColumn) && (shortestDist == distTopRight)){
-                                    validAction = true;
-                                }
-                                //bottom right
-                                if((toRow == endRow && toColumn == endColumn) && (shortestDist == distBottomRight)){
-                                    validAction = true;
-                                }
-                            }
-                            else {
-                                validAction = true;
                             }
                         }
                     }

@@ -81,7 +81,10 @@ public class PieceAlien extends Piece implements Attacker, Recruiter{
     public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
         //all directions by one square:
         //non-diagonals
-        if ((toSquareRow == fromSquareRow && (toSquareCol == fromSquareCol + 1 || toSquareCol == fromSquareCol - 1)) || ((toSquareRow == fromSquareRow + 1 || toSquareRow == fromSquareRow - 1) && fromSquareCol == toSquareCol)) {
+        if (toSquareRow == fromSquareRow && (toSquareCol == fromSquareCol + 1 || toSquareCol == fromSquareCol - 1)){
+            return true;
+        }
+        else if((toSquareRow == fromSquareRow + 1 || toSquareRow == fromSquareRow - 1) && fromSquareCol == toSquareCol){
             return true;
         }
         //diagonal
