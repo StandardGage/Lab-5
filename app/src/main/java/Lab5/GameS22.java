@@ -37,6 +37,7 @@ public class GameS22 extends Game {
      * @return the team that has pieces on the board when its opponent has no pieces; can also
      * return null if there is no winner.
      */
+    //New Objective Modification
     @Override
     public Team getWinner() {
         Team winner = null;
@@ -52,6 +53,7 @@ public class GameS22 extends Game {
         return winner;
     }
 
+    //New Objective Modification
     /**
      * Shows whether the game is over or not
      * @return true if one team has no pieces on the board, false otherwise

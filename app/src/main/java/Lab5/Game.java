@@ -23,6 +23,7 @@ public abstract class Game {
      * @param numRows    number of rows on the board
      * @param numColumns number of columns on the board
      */
+    //New Objective Modification (pieces can't be placed randomly, they have to be on one side for each team)
     private void initializeGameBoard(int numRows, int numColumns) {
         this.board = new GameBoard(numRows, numColumns);
         for (Piece teamPiece : team1.getTeamPieces()) {

@@ -23,6 +23,7 @@ public class ActionAttack extends Action {
      *
      * If toSquare is the hidden piece, abducted timer is increased by 1. //Board Square Modification
      */
+    //New Objective Modification: pieces that are attacked are reset to their side of board, not removed
     @Override
     public void performAction() {
         Piece fromPiece = game.getBoardSquares()[fromRow][fromColumn].removePiece();
