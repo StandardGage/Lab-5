@@ -86,9 +86,11 @@ public class Controller {
             case 'S':
                 ActionSpawn spawn = new ActionSpawn(game, fromRow, fromColumn, toRow, toColumn);
                 spawn.performAction();
+                break;
             case 'T': //New Action Modification (added to carry out action)
                 ActionTeleport teleport = new ActionTeleport(game, fromRow, fromColumn, toRow, toColumn);
                 teleport. performAction();
+                break;
             default:
                 System.out.println("Invalid Action Received");
                 break;
