@@ -57,7 +57,7 @@ public class PieceMinion extends Piece implements Recruiter {
         if(fromSquareCol == toSquareCol){
             return true;
         } //mutually exclusive
-        else return fromSquareRow == toSquareRow && Math.abs(fromSquareCol - toSquareCol) <= 2;
+        return fromSquareRow == toSquareRow && Math.abs(fromSquareCol - toSquareCol) == 2;
     }
 
     @Override

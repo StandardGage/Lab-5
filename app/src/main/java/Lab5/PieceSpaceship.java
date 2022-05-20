@@ -20,17 +20,8 @@ public class PieceSpaceship extends PieceAlien{
 
     @Override
     public boolean validRecruitPath(int rowRecruiter, int columnRecruiter, int rowRecruit, int columnRecruit) {
-        //all directions by one square:
-        //non-diagonals
-        if ((rowRecruit == rowRecruiter && (columnRecruit == columnRecruiter + 1 || columnRecruit == columnRecruiter - 1)) || ((rowRecruit == rowRecruiter + 1 || rowRecruit == rowRecruiter - 1) && columnRecruiter == columnRecruit)) {
-            return true;
-        }
-        //diagonal
-        else if (((rowRecruit == rowRecruiter + 1 || rowRecruit == rowRecruiter - 1)) && ((columnRecruit == columnRecruiter + 1 || columnRecruit == columnRecruiter - 1))) {
-            return true;
-        } else {
-            return false;
-        }
+        // toSquares are within 1 square from fromSquares in any direction
+        return Math.abs(rowRecruit - rowRecruiter) <= 1 && Math.abs(columnRecruit - columnRecruiter) <= 1;
     }
 
     @Override

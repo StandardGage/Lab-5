@@ -78,13 +78,8 @@ public class PieceBlueHen extends Piece implements Recruiter, Attacker {
         if(canFly()){
             return true;
         }
-        //diagonal
-        else if((toSquareRow == fromSquareRow + 1 || toSquareRow == fromSquareRow - 1) && (toSquareCol == fromSquareCol + 1 || toSquareCol == fromSquareCol -1)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        //diagonals
+        return Math.abs(fromSquareRow - toSquareRow) == 1 && Math.abs(fromSquareCol - toSquareCol) == 1;
     }
 
     public boolean canSpawn() {
@@ -96,12 +91,7 @@ public class PieceBlueHen extends Piece implements Recruiter, Attacker {
         if(canFly()){
             return true;
         }
-        else if(columnRecruiter == columnRecruit && (rowRecruit == rowRecruiter + 1 || rowRecruit == rowRecruiter - 1)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return columnRecruit == columnRecruiter && Math.abs(rowRecruit - rowRecruiter) == 1;
     }
 
     @Override
@@ -109,12 +99,7 @@ public class PieceBlueHen extends Piece implements Recruiter, Attacker {
         if(canFly()){
             return true;
         }
-        else if(rowAttacking == rowAttacked && (columnAttacked == columnAttacking + 1 || columnAttacked == columnAttacking - 1)){
-            return true;
-        }
-        else{
-            return false;
-        }
+        return rowAttacked == rowAttacking && Math.abs(columnAttacked - columnAttacking) == 1;
     }
 }
 

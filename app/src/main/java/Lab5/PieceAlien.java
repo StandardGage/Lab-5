@@ -30,8 +30,8 @@ public class PieceAlien extends Piece implements Attacker, Recruiter{
 
     @Override
     public boolean validAttackPath(int rowAttacking, int columnAttacking, int rowAttacked, int columnAttacked) {
-        //forward diagonals
-        return rowAttacked == rowAttacking + 1 && (columnAttacked == columnAttacking + 1 || columnAttacked == columnAttacking - 1);
+        //diagonals
+        return Math.abs(rowAttacked - rowAttacking) == 1 && Math.abs(columnAttacked - columnAttacking) == 1;
     }
 
     @Override
@@ -46,11 +46,8 @@ public class PieceAlien extends Piece implements Attacker, Recruiter{
 
     @Override
     public boolean validRecruitPath(int rowRecruiter, int columnRecruiter, int rowRecruit, int columnRecruit) {
-        //3 spaces back
-        if(columnRecruit == columnRecruiter && rowRecruit == rowRecruiter - 3){
-            return true;
-        }
-        return false;
+        //3 spaces up/down
+        return columnRecruit == columnRecruiter && Math.abs(rowRecruit - rowRecruiter) == 3;
     }
 
     @Override
@@ -60,11 +57,8 @@ public class PieceAlien extends Piece implements Attacker, Recruiter{
 
     @Override
     public boolean validMovePath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
-        //forward by two squares
-        if(fromSquareCol == toSquareCol && toSquareRow == fromSquareRow + 2){
-            return true;
-        }
-        return false;
+        //up or down by two squares
+        return fromSquareCol == toSquareCol && Math.abs(fromSquareRow - toSquareRow) == 2;
     }
 
     @Override
@@ -79,19 +73,7 @@ public class PieceAlien extends Piece implements Attacker, Recruiter{
 
     @Override
     public boolean validSpawnPath(int fromSquareRow, int fromSquareCol, int toSquareRow, int toSquareCol) {
-        //all directions by one square:
-        //non-diagonals
-        if (toSquareRow == fromSquareRow && (toSquareCol == fromSquareCol + 1 || toSquareCol == fromSquareCol - 1)){
-            return true;
-        }
-        else if((toSquareRow == fromSquareRow + 1 || toSquareRow == fromSquareRow - 1) && fromSquareCol == toSquareCol){
-            return true;
-        }
-        //diagonal
-        else if ((toSquareRow == fromSquareRow + 1 || toSquareRow == fromSquareRow - 1) && (toSquareCol == fromSquareCol + 1 || toSquareCol == fromSquareCol - 1)) {
-            return true;
-        } else {
-            return false;
-        }
+        // toSquares are within 1 square from fromSquares in any direction
+        return Math.abs(fromSquareRow - toSquareRow) <= 1 && Math.abs(fromSquareCol - toSquareCol) <= 1;
     }
 }
