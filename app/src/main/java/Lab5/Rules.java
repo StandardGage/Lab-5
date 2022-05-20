@@ -241,7 +241,7 @@ public class Rules {
                         }
                     }
                 if (!validAction) {
-                    System.out.println("\nYour chosen piece cannot teleport here.");
+                    System.out.println("\nYour chosen piece cannot use teleport.");
                 }
                 break;
         }
