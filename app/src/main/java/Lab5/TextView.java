@@ -52,6 +52,7 @@ public class TextView {
                 input = scr.nextInt();
             } catch (Exception e) {
                 scr.nextLine();
+                System.out.println("Invalid");
             }
         }
         return input;
@@ -93,6 +94,7 @@ public class TextView {
      */
     public void getNextPlayersAction(GameS22 game) {
         Scanner scr = new Scanner(System.in);
+        BoardSquare fromSquare;
 
         System.out.println("Enter Action A, M, R, S, or T:");
         action = getUsersNextActionType(scr);
@@ -102,21 +104,21 @@ public class TextView {
             System.out.println("Enter the row and column of the piece to use.");
             fromRow = getValidInt(-1, rows, scr);
             fromColumn = getValidInt(-1, cols, scr);
-            if(game.getBoardSquares()[fromRow][fromColumn].getPiece() != null && !game.getBoardSquares()[fromRow][fromColumn].getPiece().isAbducted()) {
-                if(game.getBoardSquares()[fromRow][fromColumn].getPiece().getTeamColor().equals(game.getCurrentTeam().getTeamColor())) {
+            fromSquare = game.getBoardSquares()[fromRow][fromColumn];
+            if(Rules.pieceExists(game, fromSquare)) {
+                if(!fromSquare.getPiece().isAbducted()) {
                     break;
                 } else {
-                    System.out.println("\nThis is an opponent's piece\n");
+                    System.out.println("This piece is abducted for " + fromSquare.getPiece().abductedTimer + "turns.");
                 }
-            } else if(game.getBoardSquares()[fromRow][fromColumn].getPiece() == null) {
-                System.out.println("\nThere is no piece here.\n");
-            } else {
-                System.out.println("\nThis piece is still abducted for " + game.getBoardSquares()[fromRow][fromColumn].getPiece().abductedTimer + "\n");
             }
         }
-        System.out.println("\nEnter the row and column of the square to perform action");
-        toRow = getValidInt(-1, rows, scr);
-        toColumn = getValidInt(-1, cols, scr);
+        do {
+            System.out.println("\nEnter the row and column of the square to perform action");
+            toRow = getValidInt(-1, rows, scr);
+            toColumn = getValidInt(-1, cols, scr);
+        }
+        while(!Rules.checkValidAction(game, fromRow, fromColumn, toRow, toColumn, action));
     }
 
     /**
