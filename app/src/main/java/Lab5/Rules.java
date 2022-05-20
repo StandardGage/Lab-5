@@ -217,7 +217,7 @@ public class Rules {
                 //has to have piece on toSquare
                 if(!(toSquare.isEmpty())) {
                     //New Piece Modification (Aliens can't perform new action)
-                    if(!(fromPiece instanceof PieceAlien)){
+                    if(!(fromPiece.getClass().equals("Lab5.PieceAlien"))){
                         //Spaceships can always use teleport & can only interact with aliens
                         //New Extended Piece Modification
                         if(fromPiece instanceof PieceSpaceship) {
