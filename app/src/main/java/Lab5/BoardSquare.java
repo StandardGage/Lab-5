@@ -18,6 +18,9 @@ public class BoardSquare {
     }
 
     public Piece getPiece() {
+        if(isEmpty()) {
+            return null;
+        }
         return this.piece;
     }
 
