@@ -136,12 +136,15 @@ public class Rules {
                         if (!(toSquare.isEmpty())) {
                             //check if toSquare piece belongs to Opponent team
                             if (toSquare.getPiece().getTeamColor().equals(game.getOpponentTeam().getTeamColor())) {
-                                //PieceSpaceship can only interact with Aliens
-                                //New Extended Piece Modification
-                                if (fromPiece instanceof PieceSpaceship) {
-                                    if (toSquare.getPiece() instanceof PieceAlien){
-                                        validAction = true;
-                                    }
+                                validAction = true;
+                            }
+                            //PieceSpaceship can only interact with Aliens
+                            //New Extended Piece Modification
+                            if (fromPiece instanceof PieceSpaceship) {
+                                if (toSquare.getPiece() instanceof PieceAlien){
+                                    validAction = true;
+                                } else {
+                                    validAction = false;
                                 }
                             }
                         }

@@ -33,22 +33,41 @@ public class GameS22 extends Game {
     }
 
     /**
-     * Determines the winner of the game based on pieces on the board.
-     * @return the team that has pieces on the board when its opponent has no pieces; can also
-     * return null if there is no winner.
+     * Checks if opponents side's first two rows is full of other team's
+     * @return winner of game, null if there is none
      */
     //New Objective Modification
     @Override
     public Team getWinner() {
-        Team winner = null;
-        if(!(team1.getTeamPieces().isEmpty()) && !(team2.getTeamPieces().isEmpty())){
-            return null;
+        Team winner = team1;
+        for (BoardSquare square : board.getSquares()[0]) {
+            if (square.getPiece() == null || !square.getPiece().getTeamColor().equals(team1.getTeamColor())) {
+                winner = null;
+                break;
+            }
         }
-        else if(team1.getTeamPieces().isEmpty()){
-            winner = team2;
+        if (winner == team1) {
+            for (BoardSquare square : board.getSquares()[1]) {
+                if (square.getPiece() == null || !square.getPiece().getTeamColor().equals(team1.getTeamColor())) {
+                    winner = null;
+                    break;
+                }
+            }
         }
-        else if(team2.getTeamPieces().isEmpty()){
-            winner = team1;
+        winner = team2;
+        for (BoardSquare square : board.getSquares()[6]) {
+            if (square.getPiece() == null || !square.getPiece().getTeamColor().equals(team2.getTeamColor())) {
+                winner = null;
+                break;
+            }
+        }
+        if (winner == team2) {
+            for (BoardSquare square : board.getSquares()[7]) {
+                if (square.getPiece() == null || !square.getPiece().getTeamColor().equals(team2.getTeamColor())) {
+                    winner = null;
+                    break;
+                }
+            }
         }
         return winner;
     }
@@ -56,11 +75,11 @@ public class GameS22 extends Game {
     //New Objective Modification
     /**
      * Shows whether the game is over or not
-     * @return true if one team has no pieces on the board, false otherwise
+     * @return true if there is a winner
      */
     @Override
     public boolean isGameEnded() {
-        return team1.getTeamPieces().isEmpty() || team2.getTeamPieces().isEmpty();
+        return getWinner() != null;
     }
 
 }

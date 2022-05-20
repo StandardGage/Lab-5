@@ -26,11 +26,11 @@ public abstract class Game {
     //New Objective Modification (pieces can't be placed randomly, they have to be on one side for each team)
     private void initializeGameBoard(int numRows, int numColumns) {
         this.board = new GameBoard(numRows, numColumns);
-        for (Piece teamPiece : team1.getTeamPieces()) {
-            this.board.findRandomEmptySpace().setPiece(teamPiece);
+        for (int i = 0; i < numColumns; i++) {
+            board.getSquares()[7][i].setPiece(team1.getTeamPieces().get(i));            
         }
-        for (Piece teamPiece : team2.getTeamPieces()) {
-            this.board.findRandomEmptySpace().setPiece(teamPiece);
+        for (int i = 0; i < numColumns; i++) {
+            board.getSquares()[0][i].setPiece(team2.getTeamPieces().get(i));            
         }
         this.board.findRandomEmptySpace().setHiddenSquare(true); //Board Square Modification (randomly places hidden square)
     }

@@ -21,6 +21,10 @@ public class Controller {
 
         // Load the pieces in an ArrayList
         ArrayList<Piece> piecesTeamA = new ArrayList<>();
+
+
+
+
         piecesTeamA.add(new PieceMinion('M', "Blu",
                 0, 0, false, true));
         piecesTeamA.add(new PieceBuzz('B', "Blu", 2, 1,
@@ -31,6 +35,10 @@ public class Controller {
                 1, 4, false, true));
         piecesTeamA.add(new PieceAlien('A', "Blu", 0, 0, false, true));
         piecesTeamA.add(new PieceSpaceship('S', "Blu", 0, 0, false, true));
+        piecesTeamA.add(new PieceBuzz('B', "Blu", 2, 1,
+                true, false, true));
+        piecesTeamA.add(new PieceMinion('M', "Blu",
+                0, 0, false, true));
         // Create a team object
         Team teamA = new Team("Blu", piecesTeamA);
 
@@ -39,14 +47,18 @@ public class Controller {
         ArrayList<Piece> piecesTeamB = new ArrayList<>();
         piecesTeamB.add(new PieceMinion('M', "Red",
                 0, 0, false, true));
-        piecesTeamB.add(new PieceBlueHen('H', "Red", 3,
-                9, false, true));
         piecesTeamB.add(new PieceBuzz('B', "Red", 2, 1,
                 true, false, true));
+        piecesTeamB.add(new PieceBlueHen('H', "Red", 3,
+                9, false, true));
         piecesTeamB.add(new PieceEvilMinion('E', "Red", 1,
                 1, 4, false, true));
         piecesTeamB.add(new PieceAlien('A', "Red", 0, 0, false, true));
         piecesTeamB.add(new PieceSpaceship('S', "Red", 0, 0, false, true));
+        piecesTeamB.add(new PieceBuzz('B', "Red", 2, 1,
+                true, false, true));
+        piecesTeamB.add(new PieceMinion('M', "Red",
+                0, 0, false, true));
         // Create a team object
         Team teamB = new Team("Red", piecesTeamB);
 

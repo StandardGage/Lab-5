@@ -45,7 +45,7 @@ public class PieceMinion extends Piece implements Recruiter {
 
     @Override
     public boolean validRecruitPath(int rowRecruiter, int columnRecruiter, int rowRecruit, int columnRecruit) {
-        return validMovePath(rowRecruiter, columnRecruiter, rowRecruit, columnRecruiter);
+        return validMovePath(rowRecruiter, columnRecruiter, rowRecruit, columnRecruit);
     }
 
     public void speak() {
