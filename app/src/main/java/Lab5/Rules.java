@@ -26,6 +26,10 @@ public class Rules {
             System.out.println("\nThis is the enemy's piece.\n");
             return false;
         }
+        if(fromPiece.isAbducted()){
+            System.out.println("\nThis piece is currently abducted.\n");
+            return false;
+        }
         System.out.println("\nYou chose piece " + fromPiece.toString());
         return true;
     }

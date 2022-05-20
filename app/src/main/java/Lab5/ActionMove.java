@@ -29,7 +29,7 @@ public class ActionMove extends Action{
 
         if(game.getBoardSquares()[toRow][toColumn].isHiddenSquare()){
             System.out.println("Piece has been abducted!");
-            fromPiece.setAbducted(fromPiece.abductedTimer + 1);
+            fromPiece.setAbducted(fromPiece.abductedTimer + 2);
         }
     }
 }

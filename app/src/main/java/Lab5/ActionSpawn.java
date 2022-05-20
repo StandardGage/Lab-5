@@ -33,7 +33,7 @@ public class ActionSpawn extends Action {
         }
         if(game.getBoardSquares()[toRow][toColumn].isHiddenSquare()){
             System.out.println("Piece has been abducted!");
-            spawnPiece.setAbducted(spawnPiece.abductedTimer + 1);
+            spawnPiece.setAbducted(spawnPiece.abductedTimer + 2);
         }
     }
 

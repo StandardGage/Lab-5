@@ -30,7 +30,7 @@ public class ActionRecruit extends Action {
 
         //New Extended Piece Modification (spaceships will freeze piece they recruit)
         if(fromPiece instanceof PieceSpaceship){
-            toPiece.setAbducted(toPiece.abductedTimer + 1);
+            toPiece.setAbducted(toPiece.abductedTimer + 2);
         }
     }
 
