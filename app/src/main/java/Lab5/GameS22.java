@@ -54,6 +54,9 @@ public class GameS22 extends Game {
                 }
             }
         }
+        if(winner == team1) {
+            return winner;
+        }
         winner = team2;
         for (BoardSquare square : board.getSquares()[6]) {
             if (square.getPiece() == null || !square.getPiece().getTeamColor().equals(team2.getTeamColor())) {

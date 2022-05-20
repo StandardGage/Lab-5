@@ -133,7 +133,7 @@ public class TextView {
      */
     public void printEndOfGameMessage(Game game) {
         if (game.getWinner() != null) {
-            System.out.println(game.getWinner() + " won the game");
+            System.out.println(game.getWinner().getTeamColor() + " won the game");
         } else {
             System.out.println("The game is over, nobody won.");
         }
