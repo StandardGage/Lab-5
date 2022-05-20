@@ -95,30 +95,28 @@ public class TextView {
     public void getNextPlayersAction(GameS22 game) {
         Scanner scr = new Scanner(System.in);
         BoardSquare fromSquare;
-
-        System.out.println("Enter Action A, M, R, S, or T:");
-        action = getUsersNextActionType(scr);
-        int rows = game.getGameBoard().getNumRows();
-        int cols = game.getGameBoard().getNumColumns();
-        while (true) {
-            System.out.println("Enter the row and column of the piece to use.");
-            fromRow = getValidInt(-1, rows, scr);
-            fromColumn = getValidInt(-1, cols, scr);
-            fromSquare = game.getBoardSquares()[fromRow][fromColumn];
-            if(Rules.pieceExists(game, fromSquare)) {
-                if(!fromSquare.getPiece().isAbducted()) {
-                    break;
-                } else {
-                    System.out.println("This piece is abducted for " + fromSquare.getPiece().abductedTimer + "turns.");
+        do {
+            System.out.println("Enter Action A, M, R, S, or T:");
+            action = getUsersNextActionType(scr);
+            int rows = game.getGameBoard().getNumRows();
+            int cols = game.getGameBoard().getNumColumns();
+            while (true) {
+                System.out.println("Enter the row and column of the piece to use.");
+                fromRow = getValidInt(-1, rows, scr);
+                fromColumn = getValidInt(-1, cols, scr);
+                fromSquare = game.getBoardSquares()[fromRow][fromColumn];
+                if (Rules.pieceExists(game, fromSquare)) {
+                    if (!fromSquare.getPiece().isAbducted()) {
+                        break;
+                    } else {
+                        System.out.println("This piece is abducted for " + fromSquare.getPiece().abductedTimer + "turns.");
+                    }
                 }
             }
-        }
-        do {
             System.out.println("\nEnter the row and column of the square to perform action");
             toRow = getValidInt(-1, rows, scr);
             toColumn = getValidInt(-1, cols, scr);
-        }
-        while(!Rules.checkValidAction(game, fromRow, fromColumn, toRow, toColumn, action));
+        } while(!Rules.checkValidAction(game, fromRow, fromColumn, toRow, toColumn, action));
     }
 
     /**
